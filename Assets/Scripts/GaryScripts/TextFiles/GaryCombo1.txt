@@ -1,0 +1,4 @@
+JabPunchRight
+CrossPunchLeft
+HookPunchRight
+LowKickLeft

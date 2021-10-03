@@ -1,0 +1,5 @@
+LowKickLeft
+JabPunchRight
+CrossPunchLeft
+HookPunchRight
+MiddleKickLeft
