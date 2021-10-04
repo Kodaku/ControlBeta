@@ -585,6 +585,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 657496772}
     m_Modifications:
+    - target: {fileID: 238166057, guid: 36cad8615e535c54ea23a79ceb64e569, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562168135, guid: 36cad8615e535c54ea23a79ceb64e569, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399239266860906308, guid: 36cad8615e535c54ea23a79ceb64e569,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6399239266860906308, guid: 36cad8615e535c54ea23a79ceb64e569,
         type: 3}
       propertyPath: lengthInSec
@@ -13728,6 +13741,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1971009719}
     m_Modifications:
     - target: {fileID: 238166057, guid: 36cad8615e535c54ea23a79ceb64e569, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 238166057, guid: 36cad8615e535c54ea23a79ceb64e569, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.06448024
       objectReference: {fileID: 0}
@@ -13752,6 +13769,10 @@ PrefabInstance:
       value: 0.6037736
       objectReference: {fileID: 0}
     - target: {fileID: 1562168135, guid: 36cad8615e535c54ea23a79ceb64e569, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1562168135, guid: 36cad8615e535c54ea23a79ceb64e569, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.06448024
       objectReference: {fileID: 0}
@@ -13774,6 +13795,11 @@ PrefabInstance:
     - target: {fileID: 1562168135, guid: 36cad8615e535c54ea23a79ceb64e569, type: 3}
       propertyPath: InitialModule.startColor.minColor.r
       value: 0.6037736
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399239266860906308, guid: 36cad8615e535c54ea23a79ceb64e569,
+        type: 3}
+      propertyPath: looping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6399239266860906308, guid: 36cad8615e535c54ea23a79ceb64e569,
         type: 3}
@@ -33665,7 +33691,7 @@ PrefabInstance:
     - target: {fileID: 852804347222722975, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
         type: 3}
       propertyPath: speed
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 852804347222722975, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
         type: 3}

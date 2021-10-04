@@ -18,9 +18,7 @@ public class MessageDispatcher
                 string canMove = splittedString[splittedString.Count - 1];
                 splittedString.Remove(destTag); //now the splitted string contains just the target names
                 splittedString.Remove(canMove);
-                // string destNames = PacketCreator.PrepareMessage(splittedString.ToArray());
                 string data = PacketCreator.PrepareMessage(new string[] {canMove});
-                // SendStartAttackMessage(destTag, canMove, splittedString.ToArray());
                 string[] destNames = splittedString.ToArray();
                 SendMessageToPlayer(messageType, destTag, data, destNames);
                 break;
@@ -31,7 +29,6 @@ public class MessageDispatcher
                 string canMove = splittedString[splittedString.Count - 1];
                 splittedString.Remove(destTag); //now the splitted string contains just the target names
                 splittedString.Remove(canMove);
-                // SendStartExplosionAttackMessage(destTag, canMove, splittedString.ToArray());
                 string data = PacketCreator.PrepareMessage(new string[] {canMove});
                 string[] destNames = splittedString.ToArray();
                 SendMessageToPlayer(messageType, destTag, data, destNames);
@@ -47,7 +44,6 @@ public class MessageDispatcher
                 string data = PacketCreator.PrepareMessage(new string[] {damage, range});
                 string[] destNames = splittedString.ToArray();
                 SendMessageToPlayer(messageType, destTag, data, destNames);
-                // SendExecuteAttackMessage(destTag, damage, range, splittedString.ToArray());
                 break;
             }
             case MessageTypes.EXECUTE_EXPLOSION_ATTACK:
@@ -60,16 +56,13 @@ public class MessageDispatcher
                 string data = PacketCreator.PrepareMessage(new string[] {damage, range});
                 string[] destNames = splittedString.ToArray();
                 SendMessageToPlayer(messageType, destTag, data, destNames);
-                // SendExecuteExplosionAttackMessage(destTag, damage, range, splittedString.ToArray());
                 break;
             }
             case MessageTypes.LAUNCH_PROJECTILE:
             {
                 splittedString.Remove(destTag); //now the splitted string contains just the target names
-                // string data = PacketCreator.PrepareMessage(new string[] {damage, range});
                 string[] destNames = splittedString.ToArray();
                 SendMessageToPlayer(messageType, destTag, "", destNames);
-                // SendProjectileAttackMessage(destTag, splittedString.ToArray());
                 break;
             }
             case MessageTypes.UPDATE_MANA:
@@ -85,28 +78,7 @@ public class MessageDispatcher
                 SendMessageToPlayer(messageType, destTag, data, destNames);
                 break;
             }
-            case MessageTypes.BEGIN_SPECIAL_ATTACK:
-            {
-                splittedString.Remove(destTag);
-                string[] destNames = splittedString.ToArray();
-                SendMessageToPlayer(messageType, destTag, "", destNames);
-                break;
-            }
-            case MessageTypes.END_SPECIAL_ATTACK:
-            {
-                splittedString.Remove(destTag);
-                string[] destNames = splittedString.ToArray();
-                SendMessageToPlayer(messageType, destTag, "", destNames);
-                break;
-            }
-            case MessageTypes.EVADE:
-            {
-                splittedString.Remove(destTag);
-                string[] destNames = splittedString.ToArray();
-                SendMessageToPlayer(messageType, destTag, "", destNames);
-                break;
-            }
-            case MessageTypes.REACHED_FLEE_POINT:
+            case MessageTypes.BEGIN_SPECIAL_ATTACK: case MessageTypes.END_SPECIAL_ATTACK: case MessageTypes.EVADE: case MessageTypes.ACTION_TERMINATED:
             {
                 splittedString.Remove(destTag);
                 string[] destNames = splittedString.ToArray();
@@ -115,74 +87,6 @@ public class MessageDispatcher
             }
         }
     }
-
-    // private void SendStartAttackMessage(string destTag, string canMove, string[] destNames)
-    // {
-    //     GameObject[] targets = GameObject.FindGameObjectsWithTag(destTag);
-    //     foreach(GameObject target in targets)
-    //     {
-    //         string destName = Array.Find<string>(destNames, name => name == target.name);
-    //         if(destName != "")
-    //         {
-    //             PlayerAttack playerAttack = target.GetComponent<PlayerAttack>();
-    //             playerAttack.ReceiveMessage(MessageTypes.BEGIN_ATTACK, canMove);
-    //         }
-    //     }
-    // }
-    // private void SendStartExplosionAttackMessage(string destTag, string canMove, string[] destNames)
-    // {
-    //     GameObject[] targets = GameObject.FindGameObjectsWithTag(destTag);
-    //     foreach(GameObject target in targets)
-    //     {
-    //         string destName = Array.Find<string>(destNames, name => name == target.name);
-    //         if(destName != "")
-    //         {
-    //             PlayerAttack playerAttack = target.GetComponent<PlayerAttack>();
-    //             playerAttack.ReceiveMessage(MessageTypes.BEGIN_EXPLOSION_ATTACK, canMove);
-    //         }
-    //     }
-    // }
-
-    // private void SendExecuteAttackMessage(string destTag, string damage, string range, string[] destNames)
-    // {
-    //     GameObject[] targets = GameObject.FindGameObjectsWithTag(destTag);
-    //     foreach(GameObject target in targets)
-    //     {
-    //         string destName = Array.Find<string>(destNames, name => name == target.name);
-    //         if(destName != "")
-    //         {
-    //             PlayerAttack playerAttack = target.GetComponent<PlayerAttack>();
-    //             playerAttack.ReceiveMessage(MessageTypes.EXECUTE_ATTACK, damage + "," + range);
-    //         }
-    //     }
-    // }
-    // private void SendExecuteExplosionAttackMessage(string destTag, string damage, string range, string[] destNames)
-    // {
-    //     GameObject[] targets = GameObject.FindGameObjectsWithTag(destTag);
-    //     foreach(GameObject target in targets)
-    //     {
-    //         string destName = Array.Find<string>(destNames, name => name == target.name);
-    //         if(destName != "")
-    //         {
-    //             PlayerAttack playerAttack = target.GetComponent<PlayerAttack>();
-    //             playerAttack.ReceiveMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, damage + "," + range);
-    //         }
-    //     }
-    // }
-
-    // private void SendProjectileAttackMessage(string destTag, string[] destNames)
-    // {
-    //     GameObject[] targets = GameObject.FindGameObjectsWithTag(destTag);
-    //     foreach(GameObject target in targets)
-    //     {
-    //         string destName = Array.Find<string>(destNames, name => name == target.name);
-    //         if(destName != "")
-    //         {
-    //             PlayerAttack playerAttack = target.GetComponent<PlayerAttack>();
-    //             playerAttack.ReceiveMessage(MessageTypes.LAUNCH_PROJECTILE, "");
-    //         }
-    //     }
-    // }
 
     private void SendMessageToPlayer(MessageTypes messageType, string destTag, string info, string[] destNames)
     {

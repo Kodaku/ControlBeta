@@ -30,8 +30,6 @@ public class AIBruceMessage : AIPlayerMessage
             string[] splittedString = message.Split(',');
             int damage = int.Parse(splittedString[0]);
             int range = int.Parse(splittedString[1]);
-            // print("Damage: " + damage);
-            // print("Range: " + range);
             if(Vector3.Distance(this.transform.position, target.transform.position) < range)
             {
                 // print("Hit");
@@ -59,18 +57,14 @@ public class AIBruceMessage : AIPlayerMessage
         }
         else if(messageType == MessageTypes.BEGIN_SPECIAL_ATTACK)
         {
-            // print("From " + transform.name + " begin special attack");
-            // decisionMaker.CanExecuteSpecialAttack(true);
             decisionMaker.ResetCurrentSpecialAttackTimer();
         }
         else if(messageType == MessageTypes.END_SPECIAL_ATTACK)
         {
-            // print("From " + transform.name + " end special attack");
-            // decisionMaker.CanExecuteSpecialAttack(false);
             decisionMaker.ResetCurrentSpecialAttackTimer();
             decisionMaker.CanDecideNextMove();
         }
-        else if(messageType == MessageTypes.REACHED_FLEE_POINT)
+        else if(messageType == MessageTypes.ACTION_TERMINATED)
         {
             decisionMaker.CanDecideNextMove();
         }

@@ -96,8 +96,9 @@ public class HumanPlayerMovement : MonoBehaviour
         {
             translationDirection *= Time.fixedDeltaTime * speed;
             currentSpeed += translationDirection;
+            currentSpeed = Mathf.Clamp(currentSpeed, 0.0f, 6.0f);
             isMoving = true;
-            if(currentSpeed > 10.0f)
+            if(currentSpeed > 5.0f)
                 humanPlayerAnimations.FastRunning(true);
             else
             {

@@ -83,12 +83,12 @@ public class AIPlayerAttack : PlayerAttack
             if(!canActivateStrongAttackTimer)
             {
                 ComboAttack();
-                aIPlayerMessage.PrepareAndSendMessage(MessageTypes.REACHED_FLEE_POINT, new string[]{"Enemy", "Bruce"});
+                aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
             }
             else if(canActivateStrongAttackTimer)
             {
                 StrongAttack();
-                aIPlayerMessage.PrepareAndSendMessage(MessageTypes.REACHED_FLEE_POINT, new string[]{"Enemy", "Bruce"});
+                aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
             }
             currentAttackTimer = attackTimer;
         }

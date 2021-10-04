@@ -51,7 +51,7 @@ public class AIBruceMovement : AIPlayerMovement
             currentNotMovingTimer += Time.deltaTime;
             if(currentNotMovingTimer > notMovingTimer)
             {
-                print("Reset random destination");
+                // print("Reset random destination");
                 reachedWanderPoint = true;
                 currentNotMovingTimer = 0.0f;
             }
@@ -63,10 +63,8 @@ public class AIBruceMovement : AIPlayerMovement
         if(Vector3.Distance(this.transform.position, target) < 1.0f)
         {
             reachedWanderPoint = true;
-            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.REACHED_FLEE_POINT, new string[]{"Enemy", "Bruce"});
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
         }
-        // agent.isStopped = false;//he can move
-        // agent.speed = 10.0f;
     }
 
     public override void Flee(Vector3 playerPosition)
@@ -81,7 +79,7 @@ public class AIBruceMovement : AIPlayerMovement
         {
             reachedFleePoint = true;
             // print("Reached flee point");
-            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.REACHED_FLEE_POINT, new string[]{"Enemy", "Bruce"});
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
         }
     }
 
@@ -93,13 +91,13 @@ public class AIBruceMovement : AIPlayerMovement
         if(notMovingTimer >= currentNotMovingTimer)
         {
             notMovingTimer = 0.0f;
-            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.REACHED_FLEE_POINT, new string[]{"Enemy", "Bruce"});
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
         }
         if(Vector3.Distance(this.transform.position, playerPosition) < 1.0f)
         {
             reachedFleePoint = true;
             // print("Reached player");
-            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.REACHED_FLEE_POINT, new string[]{"Enemy", "Bruce"});
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
         }
     }
 
@@ -155,7 +153,7 @@ public class AIBruceMovement : AIPlayerMovement
     public override void StopEnergyCharge()
     {
         base.StopEnergyCharge();
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.REACHED_FLEE_POINT, new string[]{"Enemy", "Bruce"});
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
         chargingAura.gameObject.SetActive(false);
     }
 }
