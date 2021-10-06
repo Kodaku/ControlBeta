@@ -1,0 +1,7 @@
+﻿public enum ColliderTypes
+{
+    LEFT_PUNCH_COLLIDER = 0,
+    RIGHT_PUNCH_COLLIDER = 1,
+    LEFT_LEG_COLLIDER = 2,
+    RIGHT_LEG_COLLIDER = 3
+}
