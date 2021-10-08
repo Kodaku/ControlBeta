@@ -13,6 +13,10 @@ TagManager:
   - Target
   - ProjectileTarget
   - MessageDispatcher
+  - LeftPunchCollider
+  - RightPunchCollider
+  - LeftLegCollider
+  - RightLegCollider
   layers:
   - Default
   - TransparentFX
@@ -22,8 +26,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Enemy
+  - Player
   - 
   - 
   - 

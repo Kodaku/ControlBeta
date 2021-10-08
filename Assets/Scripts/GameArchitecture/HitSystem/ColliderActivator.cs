@@ -8,11 +8,12 @@ public class ColliderActivator : MonoBehaviour
     [SerializeField] private GameObject rightPunchCollider;
     [SerializeField] private GameObject leftLegCollider;
     [SerializeField] private GameObject rightLegCollider;
-    protected HitDetector[] hitDetectors = new HitDetector[4];
+    private HitDetector[] hitDetectors = new HitDetector[4];
+    private ColliderTypes currentColliderType;
     // Start is called before the first frame update
     void Start()
     {
-        InitializeHitDetector(ColliderTypes.LEFT_PUNCH_COLLIDER, "LeftLegCollider");
+        InitializeHitDetector(ColliderTypes.LEFT_PUNCH_COLLIDER, "LeftPunchCollider");
         InitializeHitDetector(ColliderTypes.RIGHT_PUNCH_COLLIDER, "RightPunchCollider");
         InitializeHitDetector(ColliderTypes.LEFT_LEG_COLLIDER, "LeftLegCollider");
         InitializeHitDetector(ColliderTypes.RIGHT_LEG_COLLIDER, "RightLegCollider");
@@ -29,9 +30,9 @@ public class ColliderActivator : MonoBehaviour
         hitDetectors[(int)colliderTypes] = GameObject.FindGameObjectWithTag(tag).GetComponent<HitDetector>();
     }
 
-    private void ActivateCollider(ColliderTypes colliderTypes, DamageTypes damageTypes)
+    public void ActivateCollider(ColliderTypes colliderTypes)
     {
-        float damage = DeDiscretizeDamage(damageTypes);
+        SetCurrentColliderType(colliderTypes);
         switch(colliderTypes)
         {
             case ColliderTypes.LEFT_PUNCH_COLLIDER:
@@ -55,7 +56,11 @@ public class ColliderActivator : MonoBehaviour
                 break;
             }
         }
-        hitDetectors[(int)colliderTypes].SetDamage(damage);
+    }
+
+    public void SetCurrentColliderType(ColliderTypes colliderTypes)
+    {
+        this.currentColliderType = colliderTypes;
     }
 
     private float DeDiscretizeDamage(DamageTypes damageTypes)
@@ -64,11 +69,15 @@ public class ColliderActivator : MonoBehaviour
         {
             case DamageTypes.NORMAL_DAMAGE:
             {
-                return 3.0f;
+                // return 3.0f;
+                hitDetectors[(int)currentColliderType].SetDamage(3.0f);
+                break;
             }
             case DamageTypes.STRONG_DAMAGE:
             {
-                return 5.0f;
+                // return 5.0f;
+                hitDetectors[(int)currentColliderType].SetDamage(5.0f);
+                break;
             }
         }
         return 0.0f;
