@@ -76434,12 +76434,12 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 7
+    intParameter: 3
     messageOptions: 0
-  - time: 0.45
-    functionName: DectivateCollider
+  - time: 0.41666666
+    functionName: DeDiscretizeDamage
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 7
+    intParameter: 1
     messageOptions: 0

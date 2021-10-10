@@ -110,4 +110,9 @@ public class ButtonController : MonoBehaviour
     {
         player.TranslateForEvade();
     }
+
+    public void ApplyDamage()
+    {
+        player.SetCurrentState(PlayerStates.DAMAGE);
+    }
 }

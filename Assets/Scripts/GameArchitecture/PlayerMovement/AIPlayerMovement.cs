@@ -11,7 +11,10 @@ public class AIPlayerMovement : MonoBehaviour
     protected AIPlayerMessage aIPlayerMessage;
     protected float chargingTimer = 3.0f;
     protected float currentChargingTimer = 0.0f;
+    private float damageTimer = 1.5f;
+    private float currentDamageTimer = 0.0f;
     private bool isEvading = false;
+    private bool isDamaged = false;
     protected bool isCharging = false;
     public virtual void Awake()
     {
@@ -23,6 +26,16 @@ public class AIPlayerMovement : MonoBehaviour
     {
         aIPlayerAnimations = GetComponent<AIPlayerAnimations>();
         aIPlayerMessage = GetComponent<AIPlayerMessage>();
+    }
+
+    public virtual void Update()
+    {
+        currentDamageTimer += Time.deltaTime;
+        if(currentDamageTimer >= damageTimer)
+        {
+            isDamaged = true;
+            currentDamageTimer = 0.0f;
+        }
     }
 
     public virtual void SetTarget(Vector3 newTarget)
@@ -110,5 +123,19 @@ public class AIPlayerMovement : MonoBehaviour
     public virtual void StopEnergyCharge()
     {
         aIPlayerAnimations.ChargingEnergy(false);
+    }
+
+    public void Damage()
+    {
+        if(isDamaged)
+        {
+            aIPlayerAnimations.Damage();
+            isDamaged = false;
+        }
+    }
+
+    public virtual void EndDamage()
+    {
+        
     }
 }

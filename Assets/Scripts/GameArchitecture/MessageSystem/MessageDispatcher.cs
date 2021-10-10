@@ -85,6 +85,16 @@ public class MessageDispatcher
                 SendMessageToPlayer(messageType, destTag, "", destNames);
                 break;
             }
+            case MessageTypes.APPLY_PUNCH_DAMAGE:
+            {
+                splittedString.Remove(destTag);
+                string damage = splittedString[1];
+                splittedString.Remove(damage);
+                string data = PacketCreator.PrepareMessage(new string[] {damage});
+                string[] destNames = splittedString.ToArray();
+                SendMessageToPlayer(messageType, destTag, data, destNames);
+                break;
+            }
         }
     }
 

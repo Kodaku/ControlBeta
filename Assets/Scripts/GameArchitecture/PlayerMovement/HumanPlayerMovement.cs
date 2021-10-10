@@ -8,10 +8,13 @@ public class HumanPlayerMovement : MonoBehaviour
     public float speed = 6.0f;
     float currentSpeed = 0.0f;
     public float rotSpeed = 110.0f;
+    private float damageTimer = 1.0f;
+    private float currentDamageTimer = 0.0f;
     private bool isMoving = false;
     private bool reverseMovement = false;
     private bool isCharging = false;
     private bool canEvade = false;
+    private bool canApplyDamage = true;
     private HumanPlayerAnimations humanPlayerAnimations;
     private HumanPlayerMessage humanPlayerMessage;
     // Start is called before the first frame update
@@ -20,6 +23,16 @@ public class HumanPlayerMovement : MonoBehaviour
         humanPlayerAnimations = GetComponent<HumanPlayerAnimations>();
         humanPlayerMessage = GetComponent<HumanPlayerMessage>();
         chargingAura.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        currentDamageTimer += Time.deltaTime;
+        if(currentDamageTimer >= damageTimer)
+        {
+            currentDamageTimer = 0.0f;
+            canApplyDamage = true;
+        }
     }
 
     // Update is called once per frame
@@ -73,6 +86,10 @@ public class HumanPlayerMovement : MonoBehaviour
         {
             //guard break reaction
             GuardBreakReaction();
+        }
+        if(currentState == PlayerStates.DAMAGE)
+        {
+            Damage();
         }
         if(canEvade)
         {
@@ -177,6 +194,15 @@ public class HumanPlayerMovement : MonoBehaviour
     private void GuardBreakReaction()
     {
         humanPlayerAnimations.GuardBreakReaction();
+    }
+
+    private void Damage()
+    {
+        if(canApplyDamage)
+        {
+            humanPlayerAnimations.Damage();
+            canApplyDamage = false;
+        }
     }
     
     private IEnumerator ResetJumping()

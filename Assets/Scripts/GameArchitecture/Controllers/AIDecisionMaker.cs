@@ -118,4 +118,10 @@ public class AIDecisionMaker : MonoBehaviour
         print("Flee after evade");
         player.SetCurrentState(PlayerStates.FLEE, new float[]{playerPosition.x, playerPosition.y, playerPosition.z});
     }
+
+    public void ApplyDamage()
+    {
+        isActionFinished = false;
+        player.SetCurrentState(PlayerStates.DAMAGE);
+    }
 }

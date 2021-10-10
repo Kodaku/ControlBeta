@@ -59,5 +59,13 @@ public class GaryMessage : HumanPlayerMessage
         {
             buttonController.TranslateEvade();
         }
+        else if(messageType == MessageTypes.APPLY_PUNCH_DAMAGE)
+        {
+            string[] splittedString = message.Split(',');
+            int damage = int.Parse(splittedString[0]);
+            // print("From " + gameObject.name + " damage: " + damage);
+            buttonController.SendUpdateRequest(UpdatableIndices.HEALTH, -damage);
+            buttonController.ApplyDamage();
+        }
     }
 }

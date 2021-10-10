@@ -28,8 +28,21 @@ public class AIHitDetector : HitDetector
         base.EvaluateHit(hit);
         if(hit.Length > 0)
         {
+            Vector3 hitFXPos = hit[0].transform.position;
+            hitFXPos.y += 1.3f;
+            if(hit[0].transform.forward.x > 0.0f)
+            {
+                hitFXPos.x += 0.3f;
+            }
+            else if(hit[0].transform.forward.x < 0.0f)
+            {
+                hitFXPos.x -= 0.3f;
+            }
+            Instantiate(hitFX, hitFXPos, Quaternion.identity);
+            EffectsDestroyer.instance.DestroyEffect(hitFX);
             //Send a message to the player to apply the damage
             aIPlayerMessage.PrepareAndSendMessage(MessageTypes.APPLY_PUNCH_DAMAGE, new string[]{"Player", "Player", damage.ToString()});
+            canEvaluateHit = false;
             gameObject.SetActive(false);
         }
     }

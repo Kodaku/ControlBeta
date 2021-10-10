@@ -36,9 +36,9 @@ public class AIBruceMovement : AIPlayerMovement
         base.SetTarget(newTarget);
     }
 
-    void Update()
+    public override void Update()
     {
-        // patrolTimer += Time.deltaTime;
+        base.Update();
     }
 
     public override void Move()
@@ -155,5 +155,11 @@ public class AIBruceMovement : AIPlayerMovement
         base.StopEnergyCharge();
         aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
         chargingAura.gameObject.SetActive(false);
+    }
+
+    public override void EndDamage()
+    {
+        base.EndDamage();
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
     }
 }

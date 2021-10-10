@@ -18,4 +18,5 @@
     GUARD_BREAK = 15,
     GUARD_BREAK_REACTION = 16,
     FLEE = 17,
+    DAMAGE = 18
 }

@@ -8,15 +8,26 @@ public class ColliderActivator : MonoBehaviour
     [SerializeField] private GameObject rightPunchCollider;
     [SerializeField] private GameObject leftLegCollider;
     [SerializeField] private GameObject rightLegCollider;
+    [SerializeField] private bool isPlayer;
     private HitDetector[] hitDetectors = new HitDetector[4];
     private ColliderTypes currentColliderType;
     // Start is called before the first frame update
     void Start()
     {
-        InitializeHitDetector(ColliderTypes.LEFT_PUNCH_COLLIDER, "LeftPunchCollider");
-        InitializeHitDetector(ColliderTypes.RIGHT_PUNCH_COLLIDER, "RightPunchCollider");
-        InitializeHitDetector(ColliderTypes.LEFT_LEG_COLLIDER, "LeftLegCollider");
-        InitializeHitDetector(ColliderTypes.RIGHT_LEG_COLLIDER, "RightLegCollider");
+        if(isPlayer)
+        {
+            InitializeHitDetector(ColliderTypes.LEFT_PUNCH_COLLIDER, "PlayerLeftPunchCollider");
+            InitializeHitDetector(ColliderTypes.RIGHT_PUNCH_COLLIDER, "PlayerRightPunchCollider");
+            InitializeHitDetector(ColliderTypes.LEFT_LEG_COLLIDER, "PlayerLeftLegCollider");
+            InitializeHitDetector(ColliderTypes.RIGHT_LEG_COLLIDER, "PlayerRightLegCollider");
+        }
+        else
+        {
+            InitializeHitDetector(ColliderTypes.LEFT_PUNCH_COLLIDER, "LeftPunchCollider");
+            InitializeHitDetector(ColliderTypes.RIGHT_PUNCH_COLLIDER, "RightPunchCollider");
+            InitializeHitDetector(ColliderTypes.LEFT_LEG_COLLIDER, "LeftLegCollider");
+            InitializeHitDetector(ColliderTypes.RIGHT_LEG_COLLIDER, "RightLegCollider");
+        }
     }
 
     // Update is called once per frame
@@ -28,6 +39,7 @@ public class ColliderActivator : MonoBehaviour
     private void InitializeHitDetector(ColliderTypes colliderTypes, string tag)
     {
         hitDetectors[(int)colliderTypes] = GameObject.FindGameObjectWithTag(tag).GetComponent<HitDetector>();
+        hitDetectors[(int)colliderTypes].gameObject.SetActive(false);
     }
 
     public void ActivateCollider(ColliderTypes colliderTypes)
@@ -65,18 +77,19 @@ public class ColliderActivator : MonoBehaviour
 
     private float DeDiscretizeDamage(DamageTypes damageTypes)
     {
+        HitDetector hitDetector = hitDetectors[(int)currentColliderType];
         switch(damageTypes)
         {
             case DamageTypes.NORMAL_DAMAGE:
             {
-                // return 3.0f;
-                hitDetectors[(int)currentColliderType].SetDamage(3.0f);
+                hitDetector.SetDamage(3.0f);
+                hitDetector.CanEvaluateHit(true);
                 break;
             }
             case DamageTypes.STRONG_DAMAGE:
             {
-                // return 5.0f;
-                hitDetectors[(int)currentColliderType].SetDamage(5.0f);
+                hitDetector.SetDamage(5.0f);
+                hitDetector.CanEvaluateHit(true);
                 break;
             }
         }

@@ -18,12 +18,12 @@ public class EffectsDestroyer : MonoBehaviour
         }
     }
 
-    public void DestroyEffect(ParticleSystem effect)
+    public void DestroyEffect(GameObject effect)
     {
         StartCoroutine(DestroyDefinetely(effect));
     }
 
-    private IEnumerator DestroyDefinetely(ParticleSystem effect)
+    private IEnumerator DestroyDefinetely(GameObject effect)
     {
         yield return new WaitForSeconds(0.7f);
         effect.gameObject.transform.parent = transform;

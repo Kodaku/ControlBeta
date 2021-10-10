@@ -8,6 +8,7 @@ public class HitDetector : MonoBehaviour
     [SerializeField] protected float radius = 1.0f;
     [SerializeField] protected GameObject hitFX;
     protected float damage;
+    protected bool canEvaluateHit = true;
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -23,12 +24,18 @@ public class HitDetector : MonoBehaviour
     protected virtual void DetectCollision()
     {
         Collider[] hit = Physics.OverlapSphere(transform.position, radius, collisionLayer);
-        EvaluateHit(hit);
+        if(canEvaluateHit)
+            EvaluateHit(hit);
     }
 
     protected virtual void EvaluateHit(Collider[] hit)
     {
 
+    }
+
+    public void CanEvaluateHit(bool canEvaluateHit)
+    {
+        this.canEvaluateHit = canEvaluateHit;
     }
 
     public void SetDamage(float damage)

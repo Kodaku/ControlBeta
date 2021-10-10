@@ -45,4 +45,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         animator.SetTrigger("GuardBreakReaction");
     }
+
+    public void Damage()
+    {
+        animator.SetTrigger("LowReaction");
+    }
 }

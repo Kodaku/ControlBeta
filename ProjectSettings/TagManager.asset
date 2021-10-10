@@ -17,6 +17,10 @@ TagManager:
   - RightPunchCollider
   - LeftLegCollider
   - RightLegCollider
+  - PlayerLeftLegCollider
+  - PlayerRightLegCollider
+  - PlayerLeftPunchCollider
+  - PlayerRightPunchCollider
   layers:
   - Default
   - TransparentFX

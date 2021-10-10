@@ -72,5 +72,13 @@ public class AIBruceMessage : AIPlayerMessage
         {
             decisionMaker.FleeFromPlayer();
         }
+        else if(messageType == MessageTypes.APPLY_PUNCH_DAMAGE)
+        {
+            string[] splittedString = message.Split(',');
+            int damage = int.Parse(splittedString[0]);
+            // print("From " + gameObject.name + " damage: " + damage);
+            decisionMaker.SendUpdateRequest(UpdatableIndices.HEALTH, -damage);
+            decisionMaker.ApplyDamage();
+        }
     }
 }

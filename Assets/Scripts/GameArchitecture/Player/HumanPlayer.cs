@@ -21,7 +21,7 @@ public class HumanPlayer : Player
         switch(currentState)
         {
             case PlayerStates.IDLE: case PlayerStates.MOVE_LEFT: case PlayerStates.MOVE_RIGHT:
-            case PlayerStates.START_ENERGY_CHARGE: case PlayerStates.STOP_ENERGY_CHARGE: case PlayerStates.MOVE_UP: case PlayerStates.ESCAPE: case PlayerStates.GUARD_BREAK: case PlayerStates.GUARD_BREAK_REACTION:
+            case PlayerStates.START_ENERGY_CHARGE: case PlayerStates.STOP_ENERGY_CHARGE: case PlayerStates.MOVE_UP: case PlayerStates.ESCAPE: case PlayerStates.GUARD_BREAK: case PlayerStates.GUARD_BREAK_REACTION: case PlayerStates.DAMAGE:
             {
                 playerMovement.Move(currentState, optionalValues);
                 break;
