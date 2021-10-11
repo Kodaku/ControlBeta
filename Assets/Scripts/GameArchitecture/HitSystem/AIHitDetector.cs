@@ -38,8 +38,9 @@ public class AIHitDetector : HitDetector
             {
                 hitFXPos.x -= 0.3f;
             }
-            Instantiate(hitFX, hitFXPos, Quaternion.identity);
-            EffectsDestroyer.instance.DestroyEffect(hitFX);
+            GameObject newHitFX = Instantiate(hitFX, hitFXPos, Quaternion.identity);
+            newHitFX.gameObject.SetActive(true);
+            EffectsDestroyer.instance.DestroyEffect(newHitFX);
             //Send a message to the player to apply the damage
             aIPlayerMessage.PrepareAndSendMessage(MessageTypes.APPLY_PUNCH_DAMAGE, new string[]{"Player", "Player", damage.ToString()});
             canEvaluateHit = false;

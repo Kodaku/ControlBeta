@@ -25,8 +25,9 @@ public class EffectsDestroyer : MonoBehaviour
 
     private IEnumerator DestroyDefinetely(GameObject effect)
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1.0f);
         effect.gameObject.transform.parent = transform;
+        // print(effect.gameObject.transform.parent.name);
         effect.gameObject.SetActive(false);
     }
 }

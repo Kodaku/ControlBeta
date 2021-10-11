@@ -38,8 +38,9 @@ public class HumanHitDetector : HitDetector
             {
                 hitFXPos.x -= 0.3f;
             }
-            Instantiate(hitFX, hitFXPos, Quaternion.identity);
-            EffectsDestroyer.instance.DestroyEffect(hitFX);
+            GameObject newHitFX = Instantiate(hitFX, hitFXPos, Quaternion.identity);
+            newHitFX.gameObject.SetActive(true);
+            EffectsDestroyer.instance.DestroyEffect(newHitFX);
             //Send a message to apply damage
             humanPlayerMessage.PrepareAndSendMessage(MessageTypes.APPLY_PUNCH_DAMAGE, new string[]{"Enemy", "Bruce", damage.ToString()});
             canEvaluateHit = false;
