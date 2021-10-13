@@ -29,6 +29,19 @@ public class PlayerAttack : MonoBehaviour
     protected bool canActivateStrongAttackTimer = false;
     protected bool isAttacking = false;
     protected bool isReacting = false;
+    [SerializeField] protected float specialAttack1Timer;
+    [SerializeField] protected float specialAttack2Timer;
+    [SerializeField] protected float specialAttack3Timer;
+    [SerializeField] protected int specialAttack1HitNumber;
+    [SerializeField] protected int specialAttack2HitNumber;
+    [SerializeField] protected int specialAttack3HitNumber;
+    protected int specialAttack1HitCounter = 0;
+    protected int specialAttack2HitCounter = 0;
+    protected int specialAttack3HitCounter = 0;
+    protected float checkHitTime1;
+    protected float checkHitTime2;
+    protected float checkHitTime3;
+    protected int checkHitCount = 0;
     
     protected void ReadAttacks()
     {

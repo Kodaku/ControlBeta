@@ -12,9 +12,6 @@ public class HumanPlayerAttack : PlayerAttack
     [SerializeField] protected GameObject specialAttack2VFX;
     [SerializeField] protected GameObject specialAttack3VFX;
     [SerializeField] protected GameObject normalAura;
-    [SerializeField] protected float specialAttack1Timer;
-    [SerializeField] private float specialAttack2Timer;
-    [SerializeField] private float specialAttack3Timer;
     
     // Start is called before the first frame update
     public virtual void Start()
@@ -25,6 +22,11 @@ public class HumanPlayerAttack : PlayerAttack
         ReadAttacks();
         BuildAttackLists();
         InitializeIndexesAndTimers();
+        
+        // The checkHitTime starts after the first check hit message is sent: the user will see 2 hits but only 1 check hit is sent after checkHitTime seconds
+        checkHitTime1 = specialAttack1Timer / (specialAttack1HitNumber - 1);
+        checkHitTime2 = specialAttack2Timer / (specialAttack2HitNumber - 1);
+        checkHitTime3 = specialAttack3Timer / (specialAttack3HitNumber - 1);
     }
 
     public override void InitializeIndexesAndTimers()

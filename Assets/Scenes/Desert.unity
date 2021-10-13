@@ -13728,7 +13728,7 @@ PrefabInstance:
     - target: {fileID: 852804347222722975, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
         type: 3}
       propertyPath: speed
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 852804347227636140, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
         type: 3}
@@ -14495,6 +14495,21 @@ PrefabInstance:
       propertyPath: projectileTarget
       value: 
       objectReference: {fileID: 8393559526570125439}
+    - target: {fileID: 4202437748738584614, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
+        type: 3}
+      propertyPath: specialAttack1HitNumber
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202437748738584614, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
+        type: 3}
+      propertyPath: specialAttack2HitNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202437748738584614, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
+        type: 3}
+      propertyPath: specialAttack3HitNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4202437748738584615, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
         type: 3}
       propertyPath: isPlayer
@@ -14502,9 +14517,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4202437748738584618, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
         type: 3}
+      propertyPath: maxMana
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202437748738584618, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
+        type: 3}
       propertyPath: manaImage
       value: 
       objectReference: {fileID: 2036540188}
+    - target: {fileID: 4202437748738584619, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
+        type: 3}
+      propertyPath: health
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202437748738584619, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
+        type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 4202437748738584619, guid: 1633b9f3aebb61849bdaec97f7fcf4a0,
         type: 3}
       propertyPath: healthImage
@@ -19694,10 +19724,46 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 657496771}
+    - target: {fileID: 1333393833, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: specialAttack1Timer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333393833, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: specialAttack2Timer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333393833, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: specialAttack3Timer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333393833, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: specialAttack2HitNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333393833, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: specialAttack3HitNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333393835, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: mana
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333393835, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: maxMana
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 1333393835, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
       propertyPath: manaImage
       value: 
       objectReference: {fileID: 215237529}
+    - target: {fileID: 1333393836, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: health
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333393836, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 1333393836, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
       propertyPath: healthImage
       value: 

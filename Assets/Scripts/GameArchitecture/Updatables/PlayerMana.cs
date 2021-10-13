@@ -7,7 +7,7 @@ public class PlayerMana : MonoBehaviour, Updatable
 {
     [SerializeField] private Image manaImage;
     [SerializeField] private float mana;
-    private float maxMana;
+    [SerializeField] private float maxMana;
 
     public void AddQuantity(int quantity)
     {
@@ -58,12 +58,12 @@ public class PlayerMana : MonoBehaviour, Updatable
     // Start is called before the first frame update
     void Start()
     {
-        maxMana = 1000.0f;
+        // maxMana = 1000.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        DisplayMana();
     }
 }

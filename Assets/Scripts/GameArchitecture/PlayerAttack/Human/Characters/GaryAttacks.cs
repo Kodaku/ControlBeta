@@ -68,17 +68,29 @@ public class GaryAttacks : HumanPlayerAttack
         specialAttack1VFX = Instantiate(specialAttack1VFX, this.transform.position, Quaternion.identity);
         specialAttack1VFX.gameObject.SetActive(true);
         humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", "Bruce", "CAN_ESCAPE"});
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "10", "Sub"});
     }
 
     public void SendExecutionMessage()
     {
         humanPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_ATTACK, new string[]{"Enemy", "Bruce", "10", "20"});
-        // GetComponent<PlayerMana>().DecreaseMana(10);
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "10", "Sub"});
+        StartCoroutine(RepeatSendExecutionSpecialAttack1());
+    }
+
+    private IEnumerator RepeatSendExecutionSpecialAttack1()
+    {
+        print(checkHitTime1);
+        yield return new WaitForSeconds(checkHitTime1);
+        if(specialAttack1HitCounter < specialAttack1HitNumber)
+        {
+            specialAttack1HitCounter++;
+            SendExecutionMessage();
+        }
     }
 
     public override IEnumerator EndSpecialAttack1()
     {
+        specialAttack1HitCounter = 0;
         return base.EndSpecialAttack1();
     }
 
@@ -134,6 +146,7 @@ public class GaryAttacks : HumanPlayerAttack
         chidoriAura.gameObject.SetActive(true);
         // string info = PacketCreator.PrepareMessage();
         humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", "Bruce", "CAN_ESCAPE"});
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "30", "Sub"});
     }
 
     private void SpawnChidori()
@@ -149,15 +162,25 @@ public class GaryAttacks : HumanPlayerAttack
 
     private void ApplyChidoriDamage()
     {
-        // string info = PacketCreator.PrepareMessage();
         humanPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_ATTACK, new string[]{"Enemy", "Bruce", "50", "10"});
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "30", "Sub"});
-        // GetComponent<PlayerMana>().DecreaseMana(30);
+        StartCoroutine(RepeatApplyChidoriDamage());
+    }
+
+    private IEnumerator RepeatApplyChidoriDamage()
+    {
+        print(checkHitTime3);
+        yield return new WaitForSeconds(checkHitTime3);
+        if(specialAttack3HitCounter < specialAttack3HitNumber)
+        {
+            specialAttack3HitCounter++;
+            ApplyChidoriDamage();
+        }
     }
 
     public override IEnumerator EndSpecialAttack3()
     {
         yield return base.EndSpecialAttack3();
+        specialAttack3HitCounter = 0;
         executingChidori = false;
         hasExecutedChidori = false;
         chidoriAura.gameObject.SetActive(false);

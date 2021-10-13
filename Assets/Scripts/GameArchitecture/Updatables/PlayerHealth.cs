@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour, Updatable
 {
     [SerializeField] private Image healthImage;
     [SerializeField] private float health;
-    private float maxHealth;
+    [SerializeField] private float maxHealth;
 
     public void AddQuantity(int quantity)
     {
@@ -33,18 +33,23 @@ public class PlayerHealth : MonoBehaviour, Updatable
         {
             health = 0.0f;
         }
+        DisplayHealth();
+    }
+
+    private void DisplayHealth()
+    {
         float currentHealth = health / maxHealth;
         healthImage.fillAmount = currentHealth;
     }
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = health;
+        // maxHealth = health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        DisplayHealth();
     }
 }

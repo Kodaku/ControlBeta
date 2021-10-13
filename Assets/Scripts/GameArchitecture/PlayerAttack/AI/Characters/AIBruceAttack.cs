@@ -42,10 +42,14 @@ public class AIBruceAttack : AIPlayerAttack
     {
         specialAttack1VFX = Instantiate(specialAttack1VFX, target.transform.position, Quaternion.identity);
         specialAttack1VFX.gameObject.SetActive(true);
-        // string info = PacketCreator.PrepareMessage();
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "10", "5"});
-        // GetComponent<PlayerMana>().DecreaseMana(10);
         aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", "Bruce", "40", "Sub"});
+        
+        SendSpecialAttack1Execution();
+    }
+
+    private void SendSpecialAttack1Execution()
+    {
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "10", "5"});
     }
 
     public override void ExecuteSpecialAttack2()
@@ -66,14 +70,30 @@ public class AIBruceAttack : AIPlayerAttack
     {
         specialAttack2VFX = Instantiate(specialAttack2VFX, specialAttack2SpawnPoint, Quaternion.identity);
         specialAttack2VFX.gameObject.SetActive(true);
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "20", "5"});
-        // GetComponent<PlayerMana>().DecreaseMana(15);
         aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", "Bruce", "70", "Sub"});
+        SendSpecialAttack2Execution();
+    }
+
+    private void SendSpecialAttack2Execution()
+    {
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "20", "5"});
+        StartCoroutine(RepeatSendSpecialAttack2Execution());
+    }
+
+    private IEnumerator RepeatSendSpecialAttack2Execution()
+    {
+        yield return new WaitForSeconds(checkHitTime2);
+        if(specialAttack2HitCounter < specialAttack2HitNumber)
+        {
+            specialAttack2HitCounter++;
+            SendSpecialAttack2Execution();
+        }
     }
 
     public override IEnumerator EndSpecialAttack2()
     {
         yield return base.EndSpecialAttack2();
+        specialAttack2HitCounter = 0;
         specialAttack2Aura.gameObject.SetActive(false);
         specialAttack2Prepration.gameObject.SetActive(false);
     }
@@ -88,10 +108,25 @@ public class AIBruceAttack : AIPlayerAttack
     {
         specialAttack3VFX = Instantiate(specialAttack3VFX, target.transform.position, Quaternion.identity);
         specialAttack3VFX.gameObject.SetActive(true);
-        // string info = PacketCreator.PrepareMessage();
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "30", "5"});
-        // GetComponent<PlayerMana>().DecreaseMana(30);
         aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", "Bruce", "80", "Sub"});
+        
+        SendSpecialAttack3Execution();
+    }
+
+    private void SendSpecialAttack3Execution()
+    {
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "30", "5"});
+        StartCoroutine(RepeatSendSpecialAttack3Execution());
+    }
+
+    private IEnumerator RepeatSendSpecialAttack3Execution()
+    {
+        yield return new WaitForSeconds(checkHitTime3);
+        if(specialAttack3HitCounter < specialAttack3HitNumber)
+        {
+            specialAttack3HitCounter++;
+            SendSpecialAttack3Execution();
+        }
     }
 
     public override IEnumerator EndSpecialAttack3()
@@ -102,7 +137,8 @@ public class AIBruceAttack : AIPlayerAttack
 
     private IEnumerator EndSpecialAttack3Effect()
     {
-        yield return new WaitForSeconds(specialAttackTimer + 3.0f);
+        yield return new WaitForSeconds(specialAttack3Timer + 3.0f);
+        specialAttack3HitCounter = 0;
         executingSpecialAttack = false;
         specialAttack3VFX.gameObject.SetActive(false);
     }
