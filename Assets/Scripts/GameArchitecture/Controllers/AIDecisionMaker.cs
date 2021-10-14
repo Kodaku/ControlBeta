@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class AIDecisionMaker : MonoBehaviour
 {
-    [SerializeField] private int punchCount = 0;
+    [SerializeField] private int maxPunchCount = 10;
     [SerializeField] private float specialAttackTimer = 5.0f;
+    private int currentPunchCount;
     private AIPlayer player;
     private Perceivable<Vector3> positionSensor;
     private Perceivable<float>[] updatableSensors = new Perceivable<float>[2];
@@ -38,7 +39,14 @@ public class AIDecisionMaker : MonoBehaviour
         // print(agentMana);
         if(isActionFinished)
         {
-            if(agentMana <= 500)
+            if(currentPunchCount == maxPunchCount)
+            {
+                isActionFinished = false;
+                currentPunchCount = 0;
+                print("Guard Break");
+                player.SetCurrentState(PlayerStates.GUARD_BREAK);
+            }
+            else if(agentMana <= 500)
             {
                 isActionFinished = false;
                 print("Charge");
@@ -122,6 +130,13 @@ public class AIDecisionMaker : MonoBehaviour
     public void ApplyDamage()
     {
         isActionFinished = false;
+        currentPunchCount++;
         player.SetCurrentState(PlayerStates.DAMAGE);
+    }
+
+    public void ApplyGuardBreakReaction()
+    {
+        isActionFinished = false;
+        player.SetCurrentState(PlayerStates.GUARD_BREAK_REACTION);
     }
 }

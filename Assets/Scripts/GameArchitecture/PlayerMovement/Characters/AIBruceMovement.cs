@@ -162,4 +162,16 @@ public class AIBruceMovement : AIPlayerMovement
         base.EndDamage();
         aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
     }
+    
+    public override void EndGuardBreak()
+    {
+        base.EndGuardBreak();
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
+    }
+
+    public override void EndGuardBreakReaction()
+    {
+        base.EndGuardBreakReaction();
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
+    }
 }

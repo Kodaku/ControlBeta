@@ -80,5 +80,9 @@ public class AIBruceMessage : AIPlayerMessage
             decisionMaker.SendUpdateRequest(UpdatableIndices.HEALTH, -damage);
             decisionMaker.ApplyDamage();
         }
+        else if(messageType == MessageTypes.GUARD_BREAK)
+        {
+            decisionMaker.ApplyGuardBreakReaction();
+        }
     }
 }

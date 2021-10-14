@@ -67,5 +67,9 @@ public class GaryMessage : HumanPlayerMessage
             buttonController.SendUpdateRequest(UpdatableIndices.HEALTH, -damage);
             buttonController.ApplyDamage();
         }
+        else if(messageType == MessageTypes.GUARD_BREAK)
+        {
+            buttonController.ApplyGuardBreakReaction();
+        }
     }
 }

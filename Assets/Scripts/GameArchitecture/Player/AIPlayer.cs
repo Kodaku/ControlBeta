@@ -47,6 +47,11 @@ public class AIPlayer : Player
                 playerMovement.Evade();
                 break;
             }
+            case PlayerStates.GUARD_BREAK_REACTION:
+            {
+                
+                break;
+            }
             case PlayerStates.START_ENERGY_CHARGE:
             {
                 playerMovement.StartEnergyCharge();
