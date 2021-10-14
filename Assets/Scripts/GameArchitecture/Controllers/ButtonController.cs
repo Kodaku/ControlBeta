@@ -115,4 +115,9 @@ public class ButtonController : MonoBehaviour
     {
         player.SetCurrentState(PlayerStates.DAMAGE);
     }
+
+    public void ApplyGuardBreakReaction()
+    {
+        player.SetCurrentState(PlayerStates.GUARD_BREAK_REACTION);
+    }
 }
