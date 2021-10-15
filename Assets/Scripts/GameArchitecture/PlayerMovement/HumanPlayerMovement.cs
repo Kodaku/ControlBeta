@@ -178,7 +178,7 @@ public class HumanPlayerMovement : MonoBehaviour
 
     private void ExecuteEvade()
     {
-        print("Evade");
+        // print("Evade");
         humanPlayerMessage.PrepareAndSendMessage(MessageTypes.EVADE, new string[]{"Player", "Player"});
     }
 
@@ -189,6 +189,8 @@ public class HumanPlayerMovement : MonoBehaviour
     private void GuardBreak()
     {
         humanPlayerAnimations.GuardBreak();
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.GUARD_BREAK, new string[]{"Enemy", "Bruce"});
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "750", "Sub"});
     }
 
     private void GuardBreakReaction()

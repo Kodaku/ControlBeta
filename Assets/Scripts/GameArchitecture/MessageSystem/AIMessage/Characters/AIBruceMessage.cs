@@ -84,5 +84,9 @@ public class AIBruceMessage : AIPlayerMessage
         {
             decisionMaker.ApplyGuardBreakReaction();
         }
+        else if(messageType == MessageTypes.END_GUARD_BREAK)
+        {
+            decisionMaker.EndGuardBreak();
+        }
     }
 }

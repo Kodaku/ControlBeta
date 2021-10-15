@@ -39,7 +39,7 @@ public class AIDecisionMaker : MonoBehaviour
         // print(agentMana);
         if(isActionFinished)
         {
-            if(currentPunchCount == maxPunchCount)
+            if(currentPunchCount >= maxPunchCount && agentMana >= 750)
             {
                 isActionFinished = false;
                 currentPunchCount = 0;
@@ -131,12 +131,25 @@ public class AIDecisionMaker : MonoBehaviour
     {
         isActionFinished = false;
         currentPunchCount++;
+        print(currentPunchCount);
         player.SetCurrentState(PlayerStates.DAMAGE);
     }
 
     public void ApplyGuardBreakReaction()
     {
+        if(Vector3.Distance(this.transform.position, playerPosition) < 2.0f)
+        {
+            isActionFinished = false;
+            currentPunchCount = 0;
+            // print("Guard break reaction");
+            player.SetCurrentState(PlayerStates.GUARD_BREAK_REACTION);
+        }
+    }
+
+    public void EndGuardBreak()
+    {
         isActionFinished = false;
-        player.SetCurrentState(PlayerStates.GUARD_BREAK_REACTION);
+        print("Escape after guard break");
+        player.SetCurrentState(PlayerStates.ESCAPE);
     }
 }

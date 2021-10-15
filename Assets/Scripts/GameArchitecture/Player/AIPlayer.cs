@@ -49,7 +49,12 @@ public class AIPlayer : Player
             }
             case PlayerStates.GUARD_BREAK_REACTION:
             {
-                
+                playerMovement.GuardBreakReaction();
+                break;
+            }
+            case PlayerStates.GUARD_BREAK:
+            {
+                playerMovement.GuardBreak();
                 break;
             }
             case PlayerStates.START_ENERGY_CHARGE:

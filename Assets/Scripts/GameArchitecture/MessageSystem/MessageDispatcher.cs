@@ -78,7 +78,7 @@ public class MessageDispatcher
                 SendMessageToPlayer(messageType, destTag, data, destNames);
                 break;
             }
-            case MessageTypes.BEGIN_SPECIAL_ATTACK: case MessageTypes.END_SPECIAL_ATTACK: case MessageTypes.EVADE: case MessageTypes.ACTION_TERMINATED: case MessageTypes.GUARD_BREAK:
+            case MessageTypes.BEGIN_SPECIAL_ATTACK: case MessageTypes.END_SPECIAL_ATTACK: case MessageTypes.EVADE: case MessageTypes.ACTION_TERMINATED: case MessageTypes.GUARD_BREAK: case MessageTypes.END_GUARD_BREAK:
             {
                 splittedString.Remove(destTag);
                 string[] destNames = splittedString.ToArray();

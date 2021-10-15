@@ -146,6 +146,7 @@ public class AIPlayerMovement : MonoBehaviour
         if(!isGuardBreaking)
         {
             isGuardBreaking = true;
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.GUARD_BREAK, new string[]{"Player", "Player"});
             aIPlayerAnimations.GuardBreak();
         }
     }
@@ -153,6 +154,7 @@ public class AIPlayerMovement : MonoBehaviour
     public virtual void EndGuardBreak()
     {
         isGuardBreaking = false;
+        // aIPlayerMessage.PrepareAndSendMessage(MessageTypes.END_GUARD_BREAK, new string[]{"Enemy", "Bruce"});
     }
 
     public virtual void GuardBreakReaction()
