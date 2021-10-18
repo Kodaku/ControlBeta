@@ -152,4 +152,18 @@ public class AIDecisionMaker : MonoBehaviour
         print("Escape after guard break");
         player.SetCurrentState(PlayerStates.ESCAPE);
     }
+
+    public void Surpise()
+    {
+        isActionFinished = false;
+        print("Surprise");
+        player.SetCurrentState(PlayerStates.SURPRISE);
+    }
+
+    public void SuperHit()
+    {
+        isActionFinished = false;
+        print("Super Hit");
+        player.SetCurrentState(PlayerStates.SUPER_DAMAGE);
+    }
 }

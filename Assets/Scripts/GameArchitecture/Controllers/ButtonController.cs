@@ -120,4 +120,14 @@ public class ButtonController : MonoBehaviour
     {
         player.SetCurrentState(PlayerStates.GUARD_BREAK_REACTION);
     }
+
+    public void Surprise()
+    {
+        player.SetCurrentState(PlayerStates.SURPRISE);
+    }
+
+    public void SuperHit()
+    {
+        player.SetCurrentState(PlayerStates.SUPER_DAMAGE);
+    }
 }

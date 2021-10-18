@@ -91,6 +91,14 @@ public class HumanPlayerMovement : MonoBehaviour
         {
             Damage();
         }
+        if(currentState == PlayerStates.SURPRISE)
+        {
+            Surprise();
+        }
+        if(currentState == PlayerStates.SUPER_DAMAGE)
+        {
+            SuperHit();
+        }
         if(canEvade)
         {
             float newPos = speed * Time.deltaTime;
@@ -205,6 +213,16 @@ public class HumanPlayerMovement : MonoBehaviour
             humanPlayerAnimations.Damage();
             canApplyDamage = false;
         }
+    }
+
+    private void Surprise()
+    {
+        humanPlayerAnimations.Surprise(true);
+    }
+
+    private void SuperHit()
+    {
+        humanPlayerAnimations.SuperHit();
     }
     
     private IEnumerator ResetJumping()

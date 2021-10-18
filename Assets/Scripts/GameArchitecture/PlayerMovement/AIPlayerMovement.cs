@@ -18,6 +18,8 @@ public class AIPlayerMovement : MonoBehaviour
     protected bool isCharging = false;
     protected bool isReactingToGuardBreak = false;
     protected bool isGuardBreaking = false;
+    protected bool isSurprised = false;
+    protected bool isSuperHit = false;
     public virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -169,5 +171,34 @@ public class AIPlayerMovement : MonoBehaviour
     public virtual void EndGuardBreakReaction()
     {
         isReactingToGuardBreak = false;
+    }
+
+    public virtual void Surprise()
+    {
+        if(!isSurprised)
+        {
+            isSurprised = true;
+            aIPlayerAnimations.Surprise(true);
+        }
+    }
+
+    public virtual void EndSurprise()
+    {
+        isSurprised = false;
+        aIPlayerAnimations.Surprise(false);
+    }
+
+    public virtual void SuperHit()
+    {
+        if(!isSuperHit)
+        {
+            isSuperHit = true;
+            aIPlayerAnimations.SuperHit();
+        }
+    }
+
+    public virtual void EndSuperHit()
+    {
+        isSuperHit = false;
     }
 }

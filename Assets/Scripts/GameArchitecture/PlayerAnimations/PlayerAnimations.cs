@@ -50,4 +50,14 @@ public class PlayerAnimations : MonoBehaviour
     {
         animator.SetTrigger("LowReaction");
     }
+
+    public void Surprise(bool isSurprised)
+    {
+        animator.SetBool("Surprise", isSurprised);
+    }
+
+    public void SuperHit()
+    {
+        animator.SetTrigger("SuperHit");
+    }
 }

@@ -71,9 +71,17 @@ public class AIPlayer : Player
                 playerMovement.ApproachPlayer(new Vector3(playerX, playerY, playerZ));
                 break;
             }
+            case PlayerStates.SURPRISE:
+            {
+                break;
+            }
             case PlayerStates.DAMAGE:
             {
                 playerMovement.Damage();
+                break;
+            }
+            case PlayerStates.SUPER_DAMAGE:
+            {
                 break;
             }
             case PlayerStates.PUNCH: case PlayerStates.STRONG_PUNCH:
