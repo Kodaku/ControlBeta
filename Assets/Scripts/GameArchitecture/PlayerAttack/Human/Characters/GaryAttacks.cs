@@ -144,8 +144,8 @@ public class GaryAttacks : HumanPlayerAttack
         base.ExcecuteSpecialAttack3();
         currentChidoriTimer = 0.0f;
         chidoriAura.gameObject.SetActive(true);
-        // string info = PacketCreator.PrepareMessage();
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", "Bruce", "CAN_ESCAPE"});
+        
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", "Bruce", "CANNOT_ESCAPE"});
         humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "30", "Sub"});
     }
 

@@ -24,6 +24,10 @@ public class GaryMessage : HumanPlayerMessage
         {
             // print("From " + transform.name + ": " + message);
             startExplosionPosition = this.transform.position;
+            if(message == "CANNOT_ESCAPE")
+            {
+                buttonController.Surprise();
+            }
         }
         else if(messageType == MessageTypes.EXECUTE_EXPLOSION_ATTACK)
         {
