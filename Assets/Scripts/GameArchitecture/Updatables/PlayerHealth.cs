@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour, Updatable
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         DisplayHealth();
     }

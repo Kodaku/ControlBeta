@@ -12,12 +12,6 @@ public class AIBruceMessage : AIPlayerMessage
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void ReceiveMessage(MessageTypes messageType, string message)
     {
         base.ReceiveMessage(messageType, message);

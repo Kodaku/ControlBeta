@@ -15,10 +15,4 @@ public class AIPlayerMessage : PlayerMessage
     {
         base.ReceiveMessage(messageType, message);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

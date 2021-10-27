@@ -16,10 +16,4 @@ public class HumanPlayerMessage : PlayerMessage
         base.ReceiveMessage(messageType, message);
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

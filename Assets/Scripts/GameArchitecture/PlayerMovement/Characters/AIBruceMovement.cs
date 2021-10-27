@@ -36,9 +36,9 @@ public class AIBruceMovement : AIPlayerMovement
         base.SetTarget(newTarget);
     }
 
-    public override void Update()
+    public override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
     }
 
     public override void Move()

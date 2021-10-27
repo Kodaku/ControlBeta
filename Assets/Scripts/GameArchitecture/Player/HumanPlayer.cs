@@ -15,9 +15,9 @@ public class HumanPlayer : Player
     }
 
     // Update is called once per frame
-    public override void Update()
+    public override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
         switch(currentState)
         {
             case PlayerStates.IDLE: case PlayerStates.MOVE_LEFT: case PlayerStates.MOVE_RIGHT:

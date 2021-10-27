@@ -12,10 +12,7 @@ public class AIDecisionMaker : MonoBehaviour
     private Perceivable<float>[] updatableSensors = new Perceivable<float>[2];
     private Vector3 playerPosition;
     private bool executedSpecialAttack = false;
-    private bool executedFinalAttack = false;
-    private bool isReachingRandomDestination = false;
     private bool isActionFinished = false;
-    private bool hasEvaded = false;
     private float currentSpecialAttackTimer;
 
     // Start is called before the first frame update
@@ -30,7 +27,7 @@ public class AIDecisionMaker : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         currentSpecialAttackTimer += Time.deltaTime;
         playerPosition = positionSensor.GetMeasure();

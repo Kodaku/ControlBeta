@@ -49,9 +49,12 @@ public class PlayerAttack : MonoBehaviour
         {
             Attack attack = attacks[i];
             attack.characterName = characterName;
-            StreamReader sr = new StreamReader(Application.dataPath + "/Scripts/" + attack.characterName + "Scripts/TextFiles/" + attack.attacksFileName + ".txt");
-            string fileContents = sr.ReadToEnd();
-            sr.Close();
+            // print(Resources.Load(attack.characterName + "Scripts/TextFiles/" + attack.attacksFileName));
+            TextAsset sr = (TextAsset)Resources.Load(attack.characterName + "Scripts/TextFiles/" + attack.attacksFileName);
+            // StreamReader sr = new StreamReader(Application.dataPath + "/Scripts/" + attack.characterName + "Scripts/TextFiles/" + attack.attacksFileName + ".txt");
+            // string fileContents = sr.ReadToEnd();
+            // sr.Close();
+            string fileContents = sr.text;
             string[] triggers = fileContents.Split("\n"[0]);
             foreach(string trigger in triggers)
             {

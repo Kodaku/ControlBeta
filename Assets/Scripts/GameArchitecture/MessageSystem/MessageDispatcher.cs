@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MessageDispatcher
 {
-
     public void DispatchMessage(MessageTypes messageType, string info)
     {
         List<string> splittedString = new List<string>(info.Split(','));

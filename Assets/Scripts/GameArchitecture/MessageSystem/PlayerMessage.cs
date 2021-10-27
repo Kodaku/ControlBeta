@@ -10,12 +10,6 @@ public class PlayerMessage : MonoBehaviour
         messageDispatcher = new MessageDispatcher();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PrepareAndSendMessage(MessageTypes messageType, string[] info)
     {
         string data = PacketCreator.PrepareMessage(info);

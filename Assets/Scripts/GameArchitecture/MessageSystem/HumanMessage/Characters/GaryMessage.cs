@@ -11,12 +11,6 @@ public class GaryMessage : HumanPlayerMessage
         base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void ReceiveMessage(MessageTypes messageType, string message)
     {
         base.ReceiveMessage(messageType, message);

@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17082f5fc57afc7499312978e6ad37c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 3569045344336438023, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
   attacks:
   - attacksFileName: GaryCombo1
     attackType: 0
@@ -289,6 +289,12 @@ MonoBehaviour:
     attacksTrigger: []
   characterName: Gary
   reactTimer: 1
+  specialAttack1Timer: 6
+  specialAttack2Timer: 6
+  specialAttack3Timer: 6
+  specialAttack1HitNumber: 0
+  specialAttack2HitNumber: 4
+  specialAttack3HitNumber: 4
   specialAttack1VFX: {fileID: 8731375209909029954, guid: c88db49a8063f774da10858aa070ea22,
     type: 3}
   specialAttack2VFX: {fileID: 5036238670067267158, guid: 43d6033bcf67de545be8becb76cc072d,
@@ -312,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manaImage: {fileID: 0}
   mana: 100
+  maxMana: 1000
 --- !u!114 &1333393836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthImage: {fileID: 0}
-  health: 100
+  health: 400
+  maxHealth: 1000
 --- !u!114 &1333393837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09d71f7133afa348912ac10e89600e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchCount: 0
+  maxPunchCount: 10
   specialAttackTimer: 10
 --- !u!114 &1333393839
 MonoBehaviour:
@@ -396,6 +404,7 @@ MonoBehaviour:
   rightPunchCollider: {fileID: 1026046725846401029}
   leftLegCollider: {fileID: 1026046725473529226}
   rightLegCollider: {fileID: 1026046726975690689}
+  isPlayer: 0
 --- !u!1 &829363461195157593
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +547,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026046725473529226}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -649,7 +658,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026046725846401029}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -760,7 +769,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026046726975690689}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -871,7 +880,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026046727526941978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

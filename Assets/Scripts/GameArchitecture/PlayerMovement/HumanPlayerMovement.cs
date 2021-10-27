@@ -25,7 +25,7 @@ public class HumanPlayerMovement : MonoBehaviour
         chargingAura.gameObject.SetActive(false);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         currentDamageTimer += Time.deltaTime;
         if(currentDamageTimer >= damageTimer)

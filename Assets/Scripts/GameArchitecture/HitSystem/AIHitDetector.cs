@@ -13,9 +13,9 @@ public class AIHitDetector : HitDetector
     }
 
     // Update is called once per frame
-    public override void Update()
+    public override void FixedUpdate()
     {
-        base.Update();
+        base.FixedUpdate();
     }
 
     protected override void DetectCollision()

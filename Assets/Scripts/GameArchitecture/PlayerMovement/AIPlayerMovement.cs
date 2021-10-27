@@ -32,7 +32,7 @@ public class AIPlayerMovement : MonoBehaviour
         aIPlayerMessage = GetComponent<AIPlayerMessage>();
     }
 
-    public virtual void Update()
+    public virtual void FixedUpdate()
     {
         currentDamageTimer += Time.deltaTime;
         if(currentDamageTimer >= damageTimer)

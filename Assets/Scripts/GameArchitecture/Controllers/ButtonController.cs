@@ -19,7 +19,7 @@ public class ButtonController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float rotationDirection = Input.GetAxisRaw("Horizontal") * rotSpeed;
         float translationDirection = Input.GetAxisRaw("Vertical");

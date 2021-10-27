@@ -30,12 +30,6 @@ public class ColliderActivator : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void InitializeHitDetector(ColliderTypes colliderTypes, string tag)
     {
         hitDetectors[(int)colliderTypes] = GameObject.FindGameObjectWithTag(tag).GetComponent<HitDetector>();

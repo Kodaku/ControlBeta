@@ -41,6 +41,11 @@ public class GaryAttacks : HumanPlayerAttack
         // CheckChidoriExecution();
     }
 
+    public override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+
     void LateUpdate()
     {
         CheckChidoriExecution();

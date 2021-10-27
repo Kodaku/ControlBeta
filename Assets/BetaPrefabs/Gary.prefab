@@ -55,6 +55,44 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 852804348902163259}
     m_Modifications:
+    - target: {fileID: 657496773, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 215092916870137128, guid: d11a7da8b2b1de74c92e67850d39699e,
+        type: 3}
+    - target: {fileID: 657496773, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+      propertyPath: projectileTarget
+      value: 
+      objectReference: {fileID: 4846791672101566310, guid: 8f3f1006f63989440b369a08d23f7d48,
+        type: 3}
+    - target: {fileID: 657496776, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+      propertyPath: healthImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 657496777, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+      propertyPath: manaImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015335514, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+      propertyPath: hitFX
+      value: 
+      objectReference: {fileID: 8314961061481703111, guid: e4895e02695d9304e80ee10993e159cb,
+        type: 3}
+    - target: {fileID: 1015335516, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+      propertyPath: hitFX
+      value: 
+      objectReference: {fileID: 8314961061481703111, guid: e4895e02695d9304e80ee10993e159cb,
+        type: 3}
+    - target: {fileID: 1015335519, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+      propertyPath: hitFX
+      value: 
+      objectReference: {fileID: 8314961061481703111, guid: e4895e02695d9304e80ee10993e159cb,
+        type: 3}
+    - target: {fileID: 1015335520, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+      propertyPath: hitFX
+      value: 
+      objectReference: {fileID: 8314961061481703111, guid: e4895e02695d9304e80ee10993e159cb,
+        type: 3}
     - target: {fileID: 3569045344336438023, guid: e1323764cf9ed264fafaf0b96fd2298a,
         type: 3}
       propertyPath: m_Name

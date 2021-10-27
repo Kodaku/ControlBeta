@@ -72,7 +72,7 @@ public class AIPlayerAttack : PlayerAttack
         }
     }
 
-    public virtual void Update()
+    public virtual void FixedUpdate()
     {
         CheckReact();
     }
