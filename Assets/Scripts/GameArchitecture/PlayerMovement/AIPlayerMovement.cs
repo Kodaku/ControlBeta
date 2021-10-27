@@ -92,6 +92,11 @@ public class AIPlayerMovement : MonoBehaviour
         agent.SetDestination(playerPosition);
     }
 
+    public virtual void SetNewRandomDestination()
+    {
+        
+    }
+
     public virtual void SetFleeDestination(Vector3 playerPosition)
     {
         

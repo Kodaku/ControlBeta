@@ -101,7 +101,7 @@ public class AIBruceMovement : AIPlayerMovement
         }
     }
 
-    void SetNewRandomDestination()
+    public override void SetNewRandomDestination()
     {
         reachedWanderPoint = false;
         float randRadius = Random.Range(startDistanceRadius, distanceRadius) + startDistanceRadius;

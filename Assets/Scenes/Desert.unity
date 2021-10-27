@@ -18920,6 +18920,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1333393833, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1333393835, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
       propertyPath: manaImage
       value: 
@@ -18928,6 +18932,10 @@ PrefabInstance:
       propertyPath: healthImage
       value: 
       objectReference: {fileID: 413993867}
+    - target: {fileID: 1333393838, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 215092916870137128, guid: d11a7da8b2b1de74c92e67850d39699e,
         type: 3}
       propertyPath: m_Name
@@ -18990,6 +18998,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d11a7da8b2b1de74c92e67850d39699e, type: 3}
+--- !u!1 &1333393832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 215092916870137128, guid: d11a7da8b2b1de74c92e67850d39699e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1333393831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1333393833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333393832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f39aea1e1e8524a80364c79ce3a424, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDistanceRadius: 10
+  distanceRadius: 20
+--- !u!114 &1333393834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333393832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e43e7170fb45b4b81dcd16d0ff55d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scripts:
+  - {fileID: 4900000, guid: 392764afd7eac6e4dac2461548a99665, type: 3}
+  autoReset: 1
+  tickOn: 0
+  sourceInfos:
+  - isFoldout: 1
+    breakPoints: 
+    breakPointStatuses: 
+    collapsedLines: 
+    btScript: 
 --- !u!1001 &1343095181
 PrefabInstance:
   m_ObjectHideFlags: 0
