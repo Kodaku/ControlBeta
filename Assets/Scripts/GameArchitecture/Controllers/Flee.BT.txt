@@ -1,0 +1,7 @@
+tree("Root")
+	while HealthLessThan(500)
+		while InDanger(2)
+			sequence
+				Escape
+				PickFleeDestination
+				MoveToDestination
