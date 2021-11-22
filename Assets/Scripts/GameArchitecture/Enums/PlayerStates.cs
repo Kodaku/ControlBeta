@@ -20,5 +20,6 @@
     FLEE = 17,
     DAMAGE = 18,
     SURPRISE = 19,
-    SUPER_DAMAGE = 20
+    SUPER_DAMAGE = 20,
+    DEAD = 21
 }

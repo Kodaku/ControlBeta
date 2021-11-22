@@ -21,6 +21,14 @@ TagManager:
   - PlayerRightLegCollider
   - PlayerLeftPunchCollider
   - PlayerRightPunchCollider
+  - SceneTrigger
+  - TransitionScreen
+  - FightScreen
+  - TriggerManager
+  - WinLoseScreen
+  - Erick
+  - WavesManager
+  - SwitchManager
   layers:
   - Default
   - TransparentFX

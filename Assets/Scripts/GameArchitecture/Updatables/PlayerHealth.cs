@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour, Updatable
     [SerializeField] private Image healthImage;
     [SerializeField] private float health;
     [SerializeField] private float maxHealth;
+    [SerializeField] private Gradient gradient;
 
     public void AddQuantity(int quantity)
     {
@@ -15,6 +16,9 @@ public class PlayerHealth : MonoBehaviour, Updatable
         if(health <= 0.0f)
         {
             health = 0.0f;
+            GameManager.IsPlayerDead = true;
+            GameManager.ShowWinLoseScreen();
+            GameManager.ShowWinLoseText(false);
         }
         float currentHealth = health / maxHealth;
         healthImage.fillAmount = currentHealth;
@@ -39,6 +43,7 @@ public class PlayerHealth : MonoBehaviour, Updatable
     private void DisplayHealth()
     {
         float currentHealth = health / maxHealth;
+        healthImage.color = gradient.Evaluate(currentHealth);
         healthImage.fillAmount = currentHealth;
     }
     // Start is called before the first frame update

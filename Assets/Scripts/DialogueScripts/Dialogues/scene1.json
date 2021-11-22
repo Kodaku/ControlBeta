@@ -1,0 +1,53 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Ahio...Che botta!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Gary",
+            "sentence": "...ehi, ma dove mi trovo? Sembra un deserto...ma se fino ad un attimo fa mi stavo allenando nel parco...come ho fatto a finire qui?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Gary",
+            "sentence": "Un secondo...cos'è successo al mio corpo?! Perché ho le fattezze di un bot?! Ma che diavolo sta succedendo?!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "4",
+            "characterName": "Gary",
+            "sentence": "...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "5",
+            "characterName": "Gary",
+            "sentence": "Calma Gary...",
+            "eventCategory": "SHOW_NEXT_TRIGGER",
+            "eventDescription": ""
+        },
+        {
+            "id": "6",
+            "characterName": "Gary",
+            "sentence": "Uh? Laggiù vedo una luce...forse se la raggiungo scopro come tornare a casa",
+            "eventCategory": "",
+            "eventDescription": ""
+        }
+    ]
+}

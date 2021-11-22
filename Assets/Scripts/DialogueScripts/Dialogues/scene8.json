@@ -1,0 +1,60 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Ehi!",
+            "eventCategory": "SPAWN_AND_SWITCH",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Erick",
+            "sentence": "Giusto in tempo",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "In che senso?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Erick",
+            "sentence": "Non vorrai affrontare Bruce a piena potenza senza prima aver provato i tuoi poteri?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "4",
+            "characterName": "Gary",
+            "sentence": "In effetti...ma quindi questi li hai...?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "5",
+            "characterName": "Erick",
+            "sentence": "Prima ho vinto quindi ho tutto il diritto di chiedere una ricompensa",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "6",
+            "characterName": "Gary",
+            "sentence": "Ho capito...e va bene, facciamogli vedere chi comanda!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "7",
+            "characterName": "Gary",
+            "sentence": "In guardia!",
+            "eventCategory": "BATTLE_START",
+            "eventDescription": ""
+        }
+    ]
+}

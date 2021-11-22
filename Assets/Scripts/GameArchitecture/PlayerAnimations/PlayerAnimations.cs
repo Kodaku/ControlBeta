@@ -60,4 +60,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         animator.SetTrigger("SuperHit");
     }
+
+    public void Die()
+    {
+        animator.SetTrigger("Death");
+    }
 }

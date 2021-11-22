@@ -1,0 +1,235 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Ehi!",
+            "eventCategory": "SWITCH_CHARACTER",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Erick",
+            "sentence": "Allora esiste qualcun altro in questo postaccio!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "Quindi anche tu...ti sei ritrovato qui?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Erick",
+            "sentence": "Sì...stavo studiando e improvvisamente mi sono ritrovato in questa...ehm...oasi?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "4",
+            "characterName": "Gary",
+            "sentence": "Quindi immagino che anche tu non sappia come tornare a casa...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "5",
+            "characterName": "Erick",
+            "sentence": "Quando ho visto che ti avvicinavi per un attimo ho sperato potessi dirmelo tu",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "6",
+            "characterName": "Gary",
+            "sentence": "Ah...cavolo, siamo punto e a capo...comunque piacere, io mi chiamo Gary",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "7",
+            "characterName": "Erick",
+            "sentence": "Io Erick, piacere mio",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "8",
+            "characterName": "Bruce",
+            "sentence": "Bene, bene, guarda che bel teatrino",
+            "eventCategory": "BRUCE_APPEARS",
+            "eventDescription": ""
+        },
+        {
+            "id": "9",
+            "characterName": "Gary Ed Erick",
+            "sentence": "BRUCE!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "10",
+            "characterName": "Gary",
+            "sentence": "Tu...lo conosci? Ma prima lui...era a ovest di qui e se tu sei arrivato con me non avresti fatto in tempo a...a meno che ....",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "11",
+            "characterName": "Bruce",
+            "sentence": "Erick...non gli hai detto la verità?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "12",
+            "characterName": "Gary",
+            "sentence": "Verità? Riguardo cosa?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "13",
+            "characterName": "Erick",
+            "sentence": "...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "14",
+            "characterName": "Gary",
+            "sentence": "Erick cosa mi stai nascondendo?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "15",
+            "characterName": "Erick",
+            "sentence": "...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "16",
+            "characterName": "Bruce",
+            "sentence": "A quanto pare il gatto gli ha morso la lingua",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "17",
+            "characterName": "Bruce",
+            "sentence": "Poco male, te lo dirò io: lui è qui da molto più tempo di te, ti ha mentito quando ti ha detto che non sa come tornare a casa. Lo sa, eccome",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "18",
+            "characterName": "Gary",
+            "sentence": "Oh...tutto qui? Beh, meglio se lo sa. Ora come ora non mi importa se non me lo ha detto subito",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "19",
+            "characterName": "Erick",
+            "sentence": "Non si può",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "20",
+            "characterName": "Gary",
+            "sentence": "...eh? Come...non si può?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "21",
+            "characterName": "Erick",
+            "sentence": "Siamo intrappolati qui...con lui",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "22",
+            "characterName": "Gary",
+            "sentence": "Ma io pensavo che...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "23",
+            "characterName": "Erick",
+            "sentence": "Bastasse batterlo? Fidati, non si può battere",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "24",
+            "characterName": "Gary",
+            "sentence": "Ma io l'ho battuto poco fa...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "25",
+            "characterName": "Erick",
+            "sentence": "Come ti spieghi allora che lui è qui?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "26",
+            "characterName": "Bruce",
+            "sentence": "Calma calma, dai!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "27",
+            "characterName": "Bruce",
+            "sentence": "Erick, perché non gli dai una dimostrazione pratica di cosa intendo?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "28",
+            "characterName": "Gary",
+            "sentence": "Non sto capendo...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "29",
+            "characterName": "Erick",
+            "sentence": "Questa sarà la ventesima volta...e va bene!",
+            "eventCategory": "ACTIVATE_ERICK_POWER",
+            "eventDescription": ""
+        },
+        {
+            "id": "30",
+            "characterName": "Gary",
+            "sentence": "WOW! Ma come hai fatto?!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "31",
+            "characterName": "Erick",
+            "sentence": "Lascia che lo o li batta e poi ti spiegherò tutto",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "32",
+            "characterName": "Erick",
+            "sentence": "In guadia Bruce!",
+            "eventCategory": "BATTLE_START",
+            "eventDescription": ""
+        }
+    ]
+}

@@ -128,7 +128,7 @@ public class AIDecisionMaker : MonoBehaviour
     {
         isActionFinished = false;
         currentPunchCount++;
-        print(currentPunchCount);
+        // print(currentPunchCount);
         player.SetCurrentState(PlayerStates.DAMAGE);
     }
 

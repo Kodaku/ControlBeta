@@ -9,31 +9,91 @@ public class AIBehaviourTree : MonoBehaviour
     [SerializeField] private float startDistanceRadius = 10.0f;
     [SerializeField] private float distanceRadius = 20.0f;
     [SerializeField] private GameObject chargingAura;
-    private Vector3 playerPosition;
+    // private Vector3 playerPosition;
     // private AIPlayerMovement aIPlayerMovement;
     private AIPlayerAnimations aIPlayerAnimations;
+    private AIPlayerAttack aIPlayerAttack;
     private NavMeshAgent agent;
     private Perceivable<Vector3> positionSensor;
     private Perceivable<float>[] updatableSensors = new Perceivable<float>[2];
-    private bool animationCompleted = false;
+    private Updatable[] updatables = new Updatable[2];
+    private bool animationCompleted = true;
+    private bool isPowerActive = false;
+    private bool isReacting = false;
+    private bool isDamage = false;
+    private bool isGuardBreak = false;
+    private bool isDead = false;
+    public bool isLast;
+    public bool isLastInWave;
+    public bool isBoos;
     private float gap = 5.0f;
+    private float currentSpecialAttackTimer = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
         // aIPlayerMovement = GetComponent<AIPlayerMovement>();
         aIPlayerAnimations = GetComponent<AIPlayerAnimations>();
+        aIPlayerAttack = GetComponent<AIPlayerAttack>();
         agent = GetComponent<NavMeshAgent>();
         positionSensor = GetComponentInChildren<PositionSensor>();
+        // print(positionSensor);
         updatableSensors[(int)UpdatableIndices.HEALTH] = GetComponentInChildren<HealthSensor>();
         updatableSensors[(int)UpdatableIndices.MANA] = GetComponentInChildren<ManaSensor>();
-
-        chargingAura.gameObject.SetActive(false);
+        if(!isBoos)
+        {
+            updatables[(int)UpdatableIndices.HEALTH] = GetComponent<AIHealthBar>();
+        }
+        else
+        {
+            updatables[(int)UpdatableIndices.HEALTH] = GetComponent<PlayerHealth>();
+        }
+        updatables[(int)UpdatableIndices.MANA] = GetComponent<PlayerMana>();
+        if(chargingAura)
+        {
+            chargingAura.gameObject.SetActive(false);
+        }
     }
 
     public void SetAnimationCompleted()
     {
-        this.animationCompleted = true;
+        animationCompleted = true;
     }
+
+    //REPLACE FROM DECISION MAKER
+    public void SendUpdateRequest(UpdatableIndices index, int amount)
+    {
+        // print("Update mana");
+        updatables[(int)index].AddQuantity(amount);
+        float health = updatableSensors[(int)UpdatableIndices.HEALTH].GetMeasure();
+        if(health <= 0.0f)
+        {
+            isDead = true;
+        }
+    }
+
+    public void ResetCurrentSpecialAttackTimer()
+    {
+        currentSpecialAttackTimer = 0.0f;
+    }
+
+    public void ApplyDamage()
+    {
+        isReacting = true;
+        isDamage = true;
+    }
+
+    public void ApplyGuardBreakReaction()
+    {
+        isReacting = true;
+        isGuardBreak = true;
+    }
+
+    public void ResetTarget()
+    {
+        positionSensor = GetComponentInChildren<PositionSensor>();
+        positionSensor.ResetTarget();
+    }
+
 
     //WANDER SECTION
 
@@ -41,7 +101,7 @@ public class AIBehaviourTree : MonoBehaviour
     public void PickRandomDestination()
     {
         float randRadius = Random.Range(startDistanceRadius, distanceRadius) + startDistanceRadius;
-        playerPosition = positionSensor.GetMeasure();
+        Vector3 playerPosition = positionSensor.GetMeasure();
 
         Vector3 randDir = Random.insideUnitSphere * randRadius; //getting a random direction
         randDir += playerPosition;
@@ -91,7 +151,7 @@ public class AIBehaviourTree : MonoBehaviour
     [Task]
     public bool InDanger(int minDistance)
     {
-        playerPosition = positionSensor.GetMeasure();
+        Vector3 playerPosition = positionSensor.GetMeasure();
         Vector3 distance = playerPosition - this.transform.position;
         return (distance.magnitude < minDistance);
     }
@@ -114,6 +174,7 @@ public class AIBehaviourTree : MonoBehaviour
     [Task]
     public void PickFleeDestination()
     {
+        Vector3 playerPosition = positionSensor.GetMeasure();
         float currentX = this.transform.position.x;
         float currentRadius = Vector3.Distance(this.transform.position, playerPosition);
         float destinationX = currentX - startDistanceRadius + currentRadius - Random.Range(0, gap);
@@ -146,5 +207,116 @@ public class AIBehaviourTree : MonoBehaviour
         aIPlayerAnimations.ChargingEnergy(false);
         chargingAura.gameObject.SetActive(false);
         Task.current.Succeed();
+    }
+
+    [Task]
+    public bool IsPlayerDead()
+    {
+        return GameManager.IsPlayerDead;
+    }
+
+    //IDLE SECTION
+    [Task]
+    public void Idle()
+    {
+        aIPlayerAnimations.Walk(false);
+        Task.current.Succeed();
+    }
+
+    //SIMPLE FIGHT SECTION
+    [Task]
+    public bool IsFightStarted()
+    {
+        return GameManager.IsFightStarted;
+    }
+    [Task]
+    public bool IsFightEnded()
+    {
+        return GameManager.IsFightEnded;
+    }
+    [Task]
+    public bool ReactAnimationCompleted()
+    {
+        return animationCompleted;
+    }
+
+    [Task]
+    public void SearchPlayer()
+    {
+        Vector3 playerPosition = positionSensor.GetMeasure();
+        agent.SetDestination(playerPosition);
+        Task.current.Succeed();
+    }
+
+    [Task]
+    public bool ReachedPlayer()
+    {
+        return agent.remainingDistance < 1.0f;
+    }
+    [Task]
+    public void Attack()
+    {
+        aIPlayerAttack.Attack();
+        Task.current.Succeed();
+    }
+
+    //REACTION SECTION
+    [Task]
+    public void React()
+    {
+        isReacting = false;
+        if(Task.current.isStarting)
+        {
+            if(isDamage)
+            {
+                isDamage = false;
+                aIPlayerAnimations.Damage();
+            }
+            else if(isGuardBreak)
+            {
+                isGuardBreak = false;
+                aIPlayerAnimations.GuardBreakReaction();
+            }
+        }
+        if(animationCompleted)
+            Task.current.Succeed();
+    }
+
+    [Task]
+    public bool IsReacting()
+    {
+        return isReacting;
+    }
+
+    //DEATH SECTION
+    [Task]
+    public bool IsDead()
+    {
+        return isDead;
+    }
+
+    [Task]
+    public void Die()
+    {
+        aIPlayerAnimations.Die();
+        if(isLast)
+        {
+            print("Is Last");
+            GameManager.IsPreparingFight = false;
+            GameManager.IsFightStarted = false;
+            GameManager.IsFightEnded = true;
+            GameManager.ShowWinLoseScreen();
+            GameManager.ShowWinLoseText(true);
+        }
+        else if(isLastInWave)
+        {
+            GameManager.SpawnWave();
+        }
+        Task.current.Succeed();
+    }
+    [Task]
+    public void Disappear()
+    {
+        this.gameObject.SetActive(false);
     }
 }

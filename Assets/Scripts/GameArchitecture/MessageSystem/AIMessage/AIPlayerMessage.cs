@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class AIPlayerMessage : PlayerMessage
 {
-    protected AIDecisionMaker decisionMaker;
+    // protected AIDecisionMaker decisionMaker;
+    protected AIBehaviourTree behaviourTree;
     // Start is called before the first frame update
     public virtual void Start()
     {
-        decisionMaker = GetComponent<AIDecisionMaker>();
+        // decisionMaker = GetComponent<AIDecisionMaker>();
+        behaviourTree = GetComponent<AIBehaviourTree>();
     }
 
     public override void ReceiveMessage(MessageTypes messageType, string message)

@@ -14,4 +14,9 @@ public class ManaSensor : MonoBehaviour, Perceivable<float>
         float mana = manaComponent.GetQuantity();
         return mana;
     }
+
+    public void ResetTarget()
+    {
+        
+    }
 }

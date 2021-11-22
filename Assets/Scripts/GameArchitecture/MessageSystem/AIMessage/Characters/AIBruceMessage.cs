@@ -41,46 +41,46 @@ public class AIBruceMessage : AIPlayerMessage
             string updateMethod = splittedString[1];
             if(updateMethod == "Add")
             {
-                decisionMaker.SendUpdateRequest(UpdatableIndices.MANA, manaCount);
+                behaviourTree.SendUpdateRequest(UpdatableIndices.MANA, manaCount);
             }
             else if(updateMethod == "Sub")
             {
-                decisionMaker.SendUpdateRequest(UpdatableIndices.MANA, -manaCount);
+                behaviourTree.SendUpdateRequest(UpdatableIndices.MANA, -manaCount);
             }
             // print("Mana Count: " + manaCount);
         }
         else if(messageType == MessageTypes.BEGIN_SPECIAL_ATTACK)
         {
-            decisionMaker.ResetCurrentSpecialAttackTimer();
+            behaviourTree.ResetCurrentSpecialAttackTimer();
         }
         else if(messageType == MessageTypes.END_SPECIAL_ATTACK)
         {
-            decisionMaker.ResetCurrentSpecialAttackTimer();
-            decisionMaker.CanDecideNextMove();
+            behaviourTree.ResetCurrentSpecialAttackTimer();
+            // decisionMaker.CanDecideNextMove();
         }
         else if(messageType == MessageTypes.ACTION_TERMINATED)
         {
-            decisionMaker.CanDecideNextMove();
+            // decisionMaker.CanDecideNextMove();
         }
         else if(messageType == MessageTypes.EVADE)
         {
-            decisionMaker.FleeFromPlayer();
+            // decisionMaker.FleeFromPlayer();
         }
         else if(messageType == MessageTypes.APPLY_PUNCH_DAMAGE)
         {
             string[] splittedString = message.Split(',');
             int damage = int.Parse(splittedString[0]);
             // print("From " + gameObject.name + " damage: " + damage);
-            decisionMaker.SendUpdateRequest(UpdatableIndices.HEALTH, -damage);
-            decisionMaker.ApplyDamage();
+            behaviourTree.SendUpdateRequest(UpdatableIndices.HEALTH, -damage);
+            behaviourTree.ApplyDamage();
         }
         else if(messageType == MessageTypes.GUARD_BREAK)
         {
-            decisionMaker.ApplyGuardBreakReaction();
+            behaviourTree.ApplyGuardBreakReaction();
         }
         else if(messageType == MessageTypes.END_GUARD_BREAK)
         {
-            decisionMaker.EndGuardBreak();
+            // behaviourTree.EndGuardBreak();
         }
     }
 }

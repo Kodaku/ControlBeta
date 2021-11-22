@@ -1,0 +1,180 @@
+{
+    "dialogues":
+    [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Ehi c'è qualcuno!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Bruce",
+            "sentence": "Bene, bene, tu devi essere Gary",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "Ehi, come fai a conoscere il mio nome?!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Bruce",
+            "sentence": "Ho semplicemente provato ad indovinare...e a quanto pare ci ho preso. Piacere, io mi chiamo Bruce",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "4",
+            "characterName": "Gary",
+            "sentence": "Oh...piacere. Più importante: sai dove ci troviamo?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "5",
+            "characterName": "Bruce",
+            "sentence": "Beh, questo è il mio regno",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "6",
+            "characterName": "Gary",
+            "sentence": "Prego?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "7",
+            "characterName": "Bruce",
+            "sentence": "Giusto, lascia che ti spieghi",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "8",
+            "characterName": "Bruce",
+            "sentence": "Questo è il mio regno e tu sei il mio primo suddito, per questo so come ti chiami. Non preoccuparti, a est di qui c'è un villaggio e lì troverai tutto quello che ti serve per vivere. A breve poi dovrebbero arrivare anche altri sudditi",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "9",
+            "characterName": "Gary",
+            "sentence": "E tu me la butti giù così?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "10",
+            "characterName": "Bruce",
+            "sentence": "E come dovrei spiegartela scusa? Vuoi un disegnino?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "11",
+            "characterName": "Gary",
+            "sentence": "No, no, no...tutto questo non è normale",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "12",
+            "characterName": "Bruce",
+            "sentence": "Normale? Cosa intendi per normale?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "13",
+            "characterName": "Gary",
+            "sentence": "Beh...ecco...non portarmi fuori strada. Non puoi porti come nostro sovrano senza che nessuno ti abbia eletto",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "14",
+            "characterName": "Gary",
+            "sentence": "E poi io voglio tornare a casa!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "15",
+            "characterName": "Bruce",
+            "sentence": "Oh sì che posso. Il meccanismo è molto semplice: io sono il meglio qui, quindi ho ragione di essere il sovrano",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "16",
+            "characterName": "Gary",
+            "sentence": "E vorrei ben vedere...non c'è nessuno",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "17",
+            "characterName": "Bruce",
+            "sentence": "Non ti preoccupare, lo sarei comunque",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "18",
+            "characterName": "Gary",
+            "sentence": "Qui siamo un po' spavaldi",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "19",
+            "characterName": "Gary",
+            "sentence": "Facciamo un patto: se dimostro di essere meglio di te diventerò io il sovrano di questo posto e in quanto tale ti ordinerò di dirmi come fare per tornare a casa",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "20",
+            "characterName": "Bruce",
+            "sentence": "Oooh...qui abbiamo una piccola rivolta",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "21",
+            "characterName": "Gary",
+            "sentence": "Allora? In cosa consiste la sfida?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "22",
+            "characterName": "Bruce",
+            "sentence": "Combattimento: battimi in combattimento e sarai meglio di me",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "23",
+            "characterName": "Gary",
+            "sentence": "Mmh...va bene, non sono molto bravo ma ci proverò: non mi sembri molto forte",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "24",
+            "characterName": "Bruce",
+            "sentence": "Ahahahah, se lo dici tu. Dai, combattiamo!",
+            "eventCategory": "BATTLE_START",
+            "eventDescription": ""
+        }
+    ]
+}

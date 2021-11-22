@@ -1,0 +1,35 @@
+tree("Root")
+	while not IsPlayerDead
+		parallel
+			repeat mute tree("Attack")
+			repeat mute tree("React")
+			repeat mute tree ("Death")
+
+tree("Attack")
+	while not IsDead
+		sequence
+			fallback
+				while not IsFightStarted
+					Idle
+				while not IsFightEnded
+					while ReactAnimationCompleted
+						sequence
+							SearchPlayer
+							while not ReachedPlayer
+								sequence
+									SearchPlayer
+									MoveToDestination
+							Attack
+
+tree("React")
+	while not IsDead
+		while IsReacting
+			React
+
+tree("Death")
+	while IsDead
+		sequence
+			Die
+			Wait(100)
+			Disappear
+		

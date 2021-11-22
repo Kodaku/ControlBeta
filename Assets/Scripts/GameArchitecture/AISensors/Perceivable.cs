@@ -5,4 +5,5 @@ using UnityEngine;
 public interface Perceivable<T>
 {
     T GetMeasure();
+    void ResetTarget();
 }

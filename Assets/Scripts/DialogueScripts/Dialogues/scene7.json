@@ -1,0 +1,158 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Erick",
+            "sentence": "Perfetto...questa era la ventesima",
+            "eventCategory": "CAN_SWITCH_CHARACTER",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Gary",
+            "sentence": "Pazzesco...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Erick",
+            "sentence": "Scusa se ti ho mentito in prima istanza...è che non mi sono fidato subito",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Gary",
+            "sentence": "Non preoccuparti, ti capisco. Ora sono più interessato a quello che hai appena fatto",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "4",
+            "characterName": "Erick",
+            "sentence": "Parli di questi 'poteri'?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "5",
+            "characterName": "Gary",
+            "sentence": "Sì! Insegnami come si fa!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "6",
+            "characterName": "Erick",
+            "sentence": "Ma non volevi tornare a casa?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "7",
+            "characterName": "Gary",
+            "sentence": "Sì, ma...se hai detto che non si può...tanto vale che me ne faccia una ragione",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "8",
+            "characterName": "Erick",
+            "sentence": "In realtà un modo ci sarebbe...e per questo è proprio necessario che anche tu impari ad usare questi poteri",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "9",
+            "characterName": "Gary",
+            "sentence": "Due piccioni con una fava! Quindi come si fa?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "10",
+            "characterName": "Erick",
+            "sentence": "Beh, per tornare a casa dovremmo battere Bruce a piena potenza. Immagino tu abbia capito che quelli che abbiamo battuto erano solo delle 'copie'",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "11",
+            "characterName": "Gary",
+            "sentence": "Alla faccia del complotto mondiale...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "12",
+            "characterName": "Erick",
+            "sentence": "Per attivare i poteri è sufficiente che esprima un forte desiderio",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "13",
+            "characterName": "Gary",
+            "sentence": "Perché mi sembra una grossa bugia?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "14",
+            "characterName": "Erick",
+            "sentence": "Semplice: questo posto in cui ci troviamo non è reale, è una sorta di realtà simulata, per capirci. Quindi volere è potere in questo mondo, nei limiti di quello che vedi oggettivamente e percepisci soggettivamente",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "15",
+            "characterName": "Gary",
+            "sentence": "In termini umani?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "16",
+            "characterName": "Erick",
+            "sentence": "Non puoi desiderare di volere 10 mila hamburger perché non sono presenti fisicamente in questo mondo ma puoi ottenere i poteri in quanto hanno a che fare con te stesso",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "17",
+            "characterName": "Gary",
+            "sentence": "Ora ho capito, sembra abbasta semplice",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "18",
+            "characterName": "Gary",
+            "sentence": "VOGLIO I POTERI!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "19",
+            "characterName": "Gary",
+            "sentence": "WOW! Eccoli! Erick, ci sono riuscito!",
+            "eventCategory": "ACTIVATE_GARY_POWER",
+            "eventDescription": ""
+        },
+        {
+            "id": "20",
+            "characterName": "Erick",
+            "sentence": "Pazzesco...io ci ho messo 3 giorni per attivarli...forse possiamo farcela!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "21",
+            "characterName": "Gary",
+            "sentence": "Dirigiamoci da Bruce e facciamogli la pelle!",
+            "eventCategory": "SHOW_NEXT_TRIGGER",
+            "eventDescription": ""
+        }
+    ]
+}

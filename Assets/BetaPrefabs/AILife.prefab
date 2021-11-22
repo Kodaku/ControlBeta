@@ -123,6 +123,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: P2Health
       objectReference: {fileID: 0}
+    - target: {fileID: 3461030180962595822, guid: 45819219ef6985f40aa9d3c0a6f60a5f,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461030180962595822, guid: 45819219ef6985f40aa9d3c0a6f60a5f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461030180962595822, guid: 45819219ef6985f40aa9d3c0a6f60a5f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.16470589
+      objectReference: {fileID: 0}
     - target: {fileID: 3461030180962595823, guid: 45819219ef6985f40aa9d3c0a6f60a5f,
         type: 3}
       propertyPath: m_Pivot.x

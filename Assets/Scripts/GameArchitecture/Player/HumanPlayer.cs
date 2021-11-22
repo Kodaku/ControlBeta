@@ -15,13 +15,13 @@ public class HumanPlayer : Player
     }
 
     // Update is called once per frame
-    public override void FixedUpdate()
+    public override void Update()
     {
-        base.FixedUpdate();
+        base.Update();
         switch(currentState)
         {
             case PlayerStates.IDLE: case PlayerStates.MOVE_LEFT: case PlayerStates.MOVE_RIGHT:
-            case PlayerStates.START_ENERGY_CHARGE: case PlayerStates.STOP_ENERGY_CHARGE: case PlayerStates.MOVE_UP: case PlayerStates.ESCAPE: case PlayerStates.GUARD_BREAK: case PlayerStates.GUARD_BREAK_REACTION: case PlayerStates.DAMAGE: case PlayerStates.SURPRISE: case PlayerStates.SUPER_DAMAGE:
+            case PlayerStates.START_ENERGY_CHARGE: case PlayerStates.STOP_ENERGY_CHARGE: case PlayerStates.MOVE_UP: case PlayerStates.ESCAPE: case PlayerStates.GUARD_BREAK: case PlayerStates.GUARD_BREAK_REACTION: case PlayerStates.DAMAGE: case PlayerStates.SURPRISE: case PlayerStates.SUPER_DAMAGE: case PlayerStates.DEAD:
             {
                 playerMovement.Move(currentState, optionalValues);
                 break;

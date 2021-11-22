@@ -1,0 +1,74 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Allora?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Erick",
+            "sentence": "Niente Male",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "Ah...pensavo 'PAZZESCO', li ho sconfitti subito",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Erick",
+            "sentence": "Non ti conviene adagiarti sugli allori",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "4",
+            "characterName": "Gary",
+            "sentence": "In che senso?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "5",
+            "characterName": "Erick",
+            "sentence": "Se secondo te sono così forte come mai sono ancora qui?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "6",
+            "characterName": "Gary",
+            "sentence": "In effetti...però ora siamo in due!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "7",
+            "characterName": "Erick",
+            "sentence": "Questo infatti mi fa sperare nella riuscita del piano",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "8",
+            "characterName": "Gary",
+            "sentence": "Piano? Non dobbiamo solo andare lì e sconfiggerlo senza mezzi termini?",
+            "eventCategory": "SHOW_NEXT_TRIGGER",
+            "eventDescription": ""
+        },
+        {
+            "id": "9",
+            "characterName": "Erick",
+            "sentence": "Sì...hai ragione. Dai, andiamo al suo castello!",
+            "eventCategory": "CAN_SWITCH_CHARACTER",
+            "eventDescription": ""
+        }
+    ]
+}

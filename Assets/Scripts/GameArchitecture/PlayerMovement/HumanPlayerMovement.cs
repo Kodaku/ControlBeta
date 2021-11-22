@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class HumanPlayerMovement : MonoBehaviour
 {
-    [SerializeField] private GameObject chargingAura;
-    public float speed = 6.0f;
+    [SerializeField] protected GameObject chargingAura;
+    public CharacterController controller;
+    public Transform cam;
+    public float speed = 10.0f;
+    public float turnSmoothTime = 0.1f;
+    private float turnSmoothVelocity;
     float currentSpeed = 0.0f;
     public float rotSpeed = 110.0f;
     private float damageTimer = 1.0f;
@@ -15,17 +19,18 @@ public class HumanPlayerMovement : MonoBehaviour
     private bool isCharging = false;
     private bool canEvade = false;
     private bool canApplyDamage = true;
-    private HumanPlayerAnimations humanPlayerAnimations;
-    private HumanPlayerMessage humanPlayerMessage;
+    private bool isAnimationComplete = true;
+    protected HumanPlayerAnimations humanPlayerAnimations;
+    protected HumanPlayerMessage humanPlayerMessage;
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         humanPlayerAnimations = GetComponent<HumanPlayerAnimations>();
         humanPlayerMessage = GetComponent<HumanPlayerMessage>();
         chargingAura.gameObject.SetActive(false);
     }
 
-    void FixedUpdate()
+    public virtual void Update()
     {
         currentDamageTimer += Time.deltaTime;
         if(currentDamageTimer >= damageTimer)
@@ -35,28 +40,14 @@ public class HumanPlayerMovement : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     Rotate();
-    // }
-    // void FixedUpdate()
-    // {
-    //     Move();
-    //     Jump();
-    // }
-
-    public void Move(PlayerStates currentState, float[] optionalValues)
+    public virtual void Move(PlayerStates currentState, float[] optionalValues)
     {
         if(currentState == PlayerStates.START_ENERGY_CHARGE)
         {
-            chargingAura.gameObject.SetActive(true);
             StartEnergyCharge();
-            humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "1", "Add"});
         }
         if(currentState == PlayerStates.STOP_ENERGY_CHARGE)
         {
-            chargingAura.gameObject.SetActive(false);
             StopEnergyCharging();
         }
         if(currentState == PlayerStates.MOVE_LEFT || currentState == PlayerStates.MOVE_RIGHT)
@@ -65,8 +56,8 @@ public class HumanPlayerMovement : MonoBehaviour
         }
         if(currentState == PlayerStates.MOVE_UP)
         {
-            WalkAndRun(optionalValues[0]); //translation direction
-            Rotate(optionalValues[1]); //rotation direction
+            Vector3 direction = new Vector3(optionalValues[0], optionalValues[1], optionalValues[2]);
+            WalkAndRun(direction); //translation direction
         }
         if(currentState == PlayerStates.IDLE)
         {
@@ -99,6 +90,10 @@ public class HumanPlayerMovement : MonoBehaviour
         {
             SuperHit();
         }
+        if(currentState == PlayerStates.DEAD)
+        {
+            Die();
+        }
         if(canEvade)
         {
             float newPos = speed * Time.deltaTime;
@@ -113,41 +108,28 @@ public class HumanPlayerMovement : MonoBehaviour
         this.transform.Rotate(0, rotationDirection, 0);
     }
 
-    private void WalkAndRun(float translationDirection)
+    public virtual void SendMessageFromMovement(MessageTypes messageTypes, string[] info)
     {
-        // if(!isMoving)
-        //     translationDirection = AdjustTranslationDirection(translationDirection);
-        if(translationDirection > 0.0f && !isCharging)
-        {
-            translationDirection *= Time.fixedDeltaTime * speed;
-            currentSpeed += translationDirection;
-            currentSpeed = Mathf.Clamp(currentSpeed, 0.0f, 6.0f);
-            isMoving = true;
-            if(currentSpeed > 5.0f)
-                humanPlayerAnimations.FastRunning(true);
-            else
-            {
-                humanPlayerAnimations.Walk(true);
-                humanPlayerAnimations.FastRunning(false);
-            }
 
-            humanPlayerAnimations.SetBlendSpeed(Mathf.Abs(currentSpeed));
+    }
 
-            if(!reverseMovement)
-                this.transform.Translate(0, 0, translationDirection);
-            else
-                this.transform.Translate(0, 0, -translationDirection);
-        }
-        if(translationDirection > 0.0f && !isCharging)
+    public virtual void ActivateAura()
+    {
+        
+    }
+
+    private void WalkAndRun(Vector3 direction)
+    {
+        if(!isCharging)
         {
-            
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+            Vector3 moveDir = Quaternion.Euler(0.0f, targetAngle, 0.0f) * Vector3.forward;
+            humanPlayerAnimations.Walk(true);
+            humanPlayerAnimations.SetBlendSpeed(Mathf.Abs(speed));
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
-        // else
-        // {
-        //     isMoving = false;
-        //     humanPlayerAnimations.Walk(false);
-        //     currentSpeed = 0.0f;
-        // }
     }
 
     private void Idle()
@@ -158,8 +140,9 @@ public class HumanPlayerMovement : MonoBehaviour
         currentSpeed = 0.0f;
     }
 
-    private void StartEnergyCharge()
+    public virtual void StartEnergyCharge()
     {
+        chargingAura.gameObject.SetActive(true);
         isCharging = true;
         isMoving = false;
         humanPlayerAnimations.Walk(false);
@@ -168,6 +151,7 @@ public class HumanPlayerMovement : MonoBehaviour
 
     private void StopEnergyCharging()
     {
+        chargingAura.gameObject.SetActive(false);
         isCharging = false;
         humanPlayerAnimations.ChargingEnergy(false);
     }
@@ -231,47 +215,6 @@ public class HumanPlayerMovement : MonoBehaviour
         isCharging = false;
     }
 
-    private float AdjustTranslationDirection(float translationDirection)
-    {
-        float newTranslation = translationDirection;
-        float yRot = transform.localRotation.eulerAngles.y;
-        float zScale = transform.localScale.z;
-        if(translationDirection < 0.0f)
-        {
-            if((yRot >= 0.0f && yRot < 90.0f) || (yRot >= 270.0f && yRot <= 360.0f))
-            {
-                reverseMovement = false;
-                ChangeLocalScale(-1);
-            }
-            else
-            {
-                reverseMovement = true;
-                ChangeLocalScale(1);
-            }
-        }
-        else if(translationDirection > 0.0f)
-        {
-            if((yRot >= 90.0f && yRot < 270.0f))
-            {
-                reverseMovement = true;
-                ChangeLocalScale(-1);
-            }
-            else
-            {
-                reverseMovement = false;
-                ChangeLocalScale(1);
-            }
-        }
-        return newTranslation;
-    }
-
-    private void ChangeLocalScale(float newScale)
-    {
-        Vector3 temp = this.transform.localScale;
-        temp.z = newScale;
-        this.transform.localScale = temp;
-    }
-
     public void GetStrongHit()
     {
         transform.Translate(0,0,-2.0f);
@@ -280,5 +223,19 @@ public class HumanPlayerMovement : MonoBehaviour
     public bool IsMoving()
     {
         return isMoving;
+    }
+
+    private void Die()
+    {
+        if(isAnimationComplete)
+        {
+            isAnimationComplete = false;
+            humanPlayerAnimations.Die();
+        }
+    }
+
+    public void EndAnimation()
+    {
+        isAnimationComplete = true;
     }
 }

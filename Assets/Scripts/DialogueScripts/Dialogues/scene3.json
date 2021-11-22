@@ -1,0 +1,46 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Ehi...così non vale, è sparito!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Gary",
+            "sentence": "E ora? L'ho battuto, quindi in teoria sono io il più forte, però...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "...qualcosa non torna",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Gary",
+            "sentence": "Come faceva a sapere il mio nome? Non può essere stata una coincidenza",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "4",
+            "characterName": "Gary",
+            "sentence": "...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "5",
+            "characterName": "Gary",
+            "sentence": "Mah...rimuginarci non porta a nulla. Forse se raggiungo il villaggio a est, come mi ha detto lui, riesco a trovare qualche indizio",
+            "eventCategory": "SHOW_NEXT_TRIGGER",
+            "eventDescription": ""
+        }
+    ]
+}

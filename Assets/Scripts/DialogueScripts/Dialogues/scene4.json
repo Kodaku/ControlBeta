@@ -1,0 +1,25 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Ok, questo dovrebbe essere il villaggio",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Gary",
+            "sentence": "...però sembra non ci sia nessuno",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "Forse dovrei dare un'occhiata in giro, magari trovo qualcun altro",
+            "eventCategory": "SHOW_NEXT_TRIGGER",
+            "eventDescription": ""
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Ma cosa...? Sembra ci sia un'oasi a sud del villaggio",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Gary",
+            "sentence": "Ehi ma...sbaglio o sembra ci sia qualcuno vicino al laghetto?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "Magari lui sa davvero come si torna a casa! Meglio andare a chiedere",
+            "eventCategory": "SHOW_NEXT_TRIGGER",
+            "eventDescription": ""
+        }
+    ]
+}

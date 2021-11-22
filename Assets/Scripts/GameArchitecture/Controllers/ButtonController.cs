@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ButtonController : MonoBehaviour
 {
     private Player player;
     private float rotSpeed = 110.0f;
     private int releaseCount = 0;
+    private bool isPowerActive = false;
+    public bool isGary;
+    public bool isErick;
 
     void Awake()
     {
@@ -19,86 +23,82 @@ public class ButtonController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    public void ProcessInput()
     {
-        float rotationDirection = Input.GetAxisRaw("Horizontal") * rotSpeed;
-        float translationDirection = Input.GetAxisRaw("Vertical");
-        //Rotate the player
-        if(rotationDirection > 0.0f)
+        if(!PauseMenu.GameIsPaused && !DialogueDirector.IsShowingDialogue && !GameManager.IsPreparingFight && !GameManager.IsPlayerDead)
         {
-            //Rotate right
-            player.SetCurrentState(PlayerStates.MOVE_RIGHT, new float[]{rotationDirection});
-        }
-        else if(rotationDirection < 0.0f)
-        {
-            //Rotate left
-            player.SetCurrentState(PlayerStates.MOVE_LEFT, new float[]{rotationDirection});
+            float rotationDirection = Input.GetAxisRaw("Horizontal");
+            float translationDirection = Input.GetAxisRaw("Vertical");
+            Vector3 direction = new Vector3(rotationDirection, 0.0f, translationDirection).normalized;
+            PointerEventData pointer = new PointerEventData(EventSystem.current);
+            if(direction.magnitude > 0.0f)
+            {
+                player.SetCurrentState(PlayerStates.MOVE_UP, new float[]{direction.x, direction.y, direction.z});
+            }
+            else if(translationDirection <= 0.0f && rotationDirection == 0.0f)
+            {
+                player.SetCurrentState(PlayerStates.IDLE);
+            }
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                player.SetCurrentState(PlayerStates.ESCAPE);
+            }
+            if(Input.GetKeyDown(KeyCode.G))
+            {
+                player.SetCurrentState(PlayerStates.GUARD_BREAK);
+            }
+            if(Input.GetKey(KeyCode.Space) && isPowerActive)
+            {
+                //Charge
+                releaseCount = 0;
+                player.SetCurrentState(PlayerStates.START_ENERGY_CHARGE);
+            }
+            else if(Input.GetKeyUp(KeyCode.Space) && releaseCount == 0 && isPowerActive)
+            {
+                releaseCount = 1;
+                player.SetCurrentState(PlayerStates.STOP_ENERGY_CHARGE);
+            }
 
+            if(Input.GetKeyDown(KeyCode.Z))
+            {
+                //Punch
+                player.SetCurrentState(PlayerStates.PUNCH);
+            }
+
+            if(Input.GetKeyDown(KeyCode.X))
+            {
+                //Strong punch
+                player.SetCurrentState(PlayerStates.STRONG_PUNCH);
+            }
+
+            if(Input.GetKeyDown(KeyCode.Q) && isPowerActive)
+            {
+                //First special attack
+                player.SetCurrentState(PlayerStates.SPECIAL_1);
+            }
+
+            if(Input.GetKeyDown(KeyCode.P) && isPowerActive)
+            {
+                //Second special attack
+                player.SetCurrentState(PlayerStates.SPECIAL_2);
+            }
+
+            if(Input.GetKeyDown(KeyCode.C) && isPowerActive)
+            {
+                //Final attack
+                player.SetCurrentState(PlayerStates.FINAL_ATTACK);
+            }
         }
-        if(translationDirection > 0.0f && Input.GetKey(KeyCode.B))
+        else if(GameManager.IsPlayerDead)
         {
-            player.SetCurrentState(PlayerStates.MOVE_UP, new float[]{translationDirection, rotationDirection});
+            player.SetCurrentState(PlayerStates.DEAD);
         }
-        //Move the player
-        else if(translationDirection > 0.0f)
-        {
-            //Move up
-            player.SetCurrentState(PlayerStates.MOVE_UP, new float[]{translationDirection, rotationDirection});
-        }
-        else if(translationDirection <= 0.0f && rotationDirection == 0.0f)
-        {
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.tag == "SceneTrigger")
             player.SetCurrentState(PlayerStates.IDLE);
-        }
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            player.SetCurrentState(PlayerStates.ESCAPE);
-        }
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            player.SetCurrentState(PlayerStates.GUARD_BREAK);
-        }
-        if(Input.GetKey(KeyCode.Space))
-        {
-            //Charge
-            releaseCount = 0;
-            player.SetCurrentState(PlayerStates.START_ENERGY_CHARGE);
-        }
-        else if(Input.GetKeyUp(KeyCode.Space) && releaseCount == 0)
-        {
-            releaseCount = 1;
-            player.SetCurrentState(PlayerStates.STOP_ENERGY_CHARGE);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            //Punch
-            player.SetCurrentState(PlayerStates.PUNCH);
-        }
-
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            //Strong punch
-            player.SetCurrentState(PlayerStates.STRONG_PUNCH);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            //First special attack
-            player.SetCurrentState(PlayerStates.SPECIAL_1);
-        }
-
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            //Second special attack
-            player.SetCurrentState(PlayerStates.SPECIAL_2);
-        }
-
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            //Final attack
-            player.SetCurrentState(PlayerStates.FINAL_ATTACK);
-        }
-
     }
 
     public void SendUpdateRequest(UpdatableIndices index, int amount)
@@ -129,5 +129,15 @@ public class ButtonController : MonoBehaviour
     public void SuperHit()
     {
         player.SetCurrentState(PlayerStates.SUPER_DAMAGE);
+    }
+
+    public void ActivatePower()
+    {
+        isPowerActive = true;
+    }
+
+    public void DeactivatePower()
+    {
+        isPowerActive = false;
     }
 }

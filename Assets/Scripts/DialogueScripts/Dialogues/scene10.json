@@ -1,0 +1,151 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Bruce",
+            "sentence": "Bene bene, chi abbiamo qui",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Gary",
+            "sentence": "Lui è quello vero?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Bruce",
+            "sentence": "Non ti è bastato guardarmi?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Erick",
+            "sentence": "Sì, è lui",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "4",
+            "characterName": "Bruce",
+            "sentence": "Quindi sei venuto qui a perdere per l'ennesima volta, Erick?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "5",
+            "characterName": "Erick",
+            "sentence": "Stavolta sarà diverso, siamo in due",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "6",
+            "characterName": "Bruce",
+            "sentence": "Quindi intendete affrontarmi in due?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "7",
+            "characterName": "Erick",
+            "sentence": "Tutto è lecito in guerra",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "8",
+            "characterName": "Gary",
+            "sentence": "Guerra? Ma io voglio solo tornare a casa!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "9",
+            "characterName": "Erick",
+            "sentence": "...si fa per dire. Tranquillo se lo battiamo ci torneremo",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "10",
+            "characterName": "Gary",
+            "sentence": "Comunque dopo averlo battuto mi dovrai anche spiegare per bene cosa sta succedendo",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "11",
+            "characterName": "Erick",
+            "sentence": "Volentieri",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "12",
+            "characterName": "Bruce",
+            "sentence": "Qui pecchiamo un po' di esuberanza",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "13",
+            "characterName": "Gary",
+            "sentence": "Noi? Dai, per favore. Chi è che si è autoproclamato sovrano di questo postaccio?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "14",
+            "characterName": "Bruce",
+            "sentence": "Non è un postaccio, è un luogo adatto in cui far vivere dei rifiuti",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "15",
+            "characterName": "Gary",
+            "sentence": "Rifiuti?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "16",
+            "characterName": "Bruce",
+            "sentence": "Voi due e tutte le altre persone, siete solo dei rifiuti. IO sono il meglio!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "17",
+            "characterName": "Gary",
+            "sentence": "...ma sei serio? Cioè, l'asilo credo tu lo abbia finito",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "18",
+            "characterName": "Erick",
+            "sentence": "Gary, non provocarlo",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "19",
+            "characterName": "Bruce",
+            "sentence": "Adesso mi hai fatto incazzare davvero! Fidatevi, voi due non uscirete vivi di qui!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "20",
+            "characterName": "Erick",
+            "sentence": "Arriva!",
+            "eventCategory": "BATTLE_BOSS",
+            "eventDescription": ""
+        }
+    ]
+}

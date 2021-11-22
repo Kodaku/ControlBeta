@@ -15,4 +15,9 @@ public class PositionSensor : MonoBehaviour, Perceivable<Vector3>
         // Transform agentPosition = GameObject.FindGameObjectWithTag("Enemy").transform;
         return playerPosition;
     }
+
+    public void ResetTarget()
+    {
+        target = GameObject.FindGameObjectWithTag("Player");
+    }
 }
