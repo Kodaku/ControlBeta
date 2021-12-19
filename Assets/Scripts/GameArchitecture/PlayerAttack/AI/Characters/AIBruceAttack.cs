@@ -27,40 +27,40 @@ public class AIBruceAttack : AIPlayerAttack
         base.Attack();
     }
 
-    public override void SpecialAttack(PlayerStates currentState)
+    public override void SpecialAttack(PlayerStates currentState, Vector3 targetPosition)
     {
-        base.SpecialAttack(currentState);
+        base.SpecialAttack(currentState, targetPosition);
     }
 
-    public override void ExecuteSpecialAttack1()
+    public override void ExecuteSpecialAttack1(Vector3 targetPosition)
     {
-        base.ExecuteSpecialAttack1();
+        base.ExecuteSpecialAttack1(targetPosition);
         aIPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_EXPLOSION_ATTACK, new string[]{"Player", "Player", "CAN_ESCAPE"});
     }
 
     private void ActivateSpecialAttack1()
     {
-        specialAttack1VFX = Instantiate(specialAttack1VFX, target.transform.position, Quaternion.identity);
+        specialAttack1VFX = Instantiate(specialAttack1VFX, target, Quaternion.identity);
         specialAttack1VFX.gameObject.SetActive(true);
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", "Bruce", "40", "Sub"});
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", this.gameObject.name, "400", "Sub"});
         
         SendSpecialAttack1Execution();
     }
 
     private void SendSpecialAttack1Execution()
     {
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "10", "5"});
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "150", "5"});
     }
 
-    public override void ExecuteSpecialAttack2()
+    public override void ExecuteSpecialAttack2(Vector3 targetPosition)
     {
-        base.ExecuteSpecialAttack2();
+        base.ExecuteSpecialAttack2(targetPosition);
         aIPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_EXPLOSION_ATTACK, new string[]{"Player", "Player", "CANNOT_ESCAPE"});
     }
     
     private void ActivateSpecialAttack2()
     {
-        specialAttack2SpawnPoint = target.transform.position;
+        specialAttack2SpawnPoint = target;
         specialAttack2Aura.gameObject.SetActive(true);
         specialAttack2Prepration = Instantiate(specialAttack2Prepration, specialAttack2SpawnPoint, Quaternion.identity);
         specialAttack2Prepration.gameObject.SetActive(true);
@@ -70,14 +70,14 @@ public class AIBruceAttack : AIPlayerAttack
     {
         specialAttack2VFX = Instantiate(specialAttack2VFX, specialAttack2SpawnPoint, Quaternion.identity);
         specialAttack2VFX.gameObject.SetActive(true);
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", "Bruce", "70", "Sub"});
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", this.gameObject.name, "700", "Sub"});
         SendSpecialAttack2Execution();
     }
 
     private void SendSpecialAttack2Execution()
     {
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "20", "5"});
-        StartCoroutine(RepeatSendSpecialAttack2Execution());
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "250", "5"});
+        // StartCoroutine(RepeatSendSpecialAttack2Execution());
     }
 
     private IEnumerator RepeatSendSpecialAttack2Execution()
@@ -98,25 +98,25 @@ public class AIBruceAttack : AIPlayerAttack
         specialAttack2Prepration.gameObject.SetActive(false);
     }
 
-    public override void ExecuteSpecialAttack3()
+    public override void ExecuteSpecialAttack3(Vector3 targetPosition)
     {
-        base.ExecuteSpecialAttack3();
+        base.ExecuteSpecialAttack3(targetPosition);
         aIPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_EXPLOSION_ATTACK, new string[]{"Player", "Player", "CANNOT_ESCAPE"});
     }
 
     private void ActivateSpecialAttack3()
     {
-        specialAttack3VFX = Instantiate(specialAttack3VFX, target.transform.position, Quaternion.identity);
+        specialAttack3VFX = Instantiate(specialAttack3VFX, target, Quaternion.identity);
         specialAttack3VFX.gameObject.SetActive(true);
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", "Bruce", "80", "Sub"});
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", this.gameObject.name, "800", "Sub"});
         
         SendSpecialAttack3Execution();
     }
 
     private void SendSpecialAttack3Execution()
     {
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "30", "5"});
-        StartCoroutine(RepeatSendSpecialAttack3Execution());
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_EXPLOSION_ATTACK, new string[]{"Player", "Player", "400", "5"});
+        // StartCoroutine(RepeatSendSpecialAttack3Execution());
     }
 
     private IEnumerator RepeatSendSpecialAttack3Execution()

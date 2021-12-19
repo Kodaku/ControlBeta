@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class WinLoseScreen : MonoBehaviour
 {
+    public GameObject objectiveImage;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class WinLoseScreen : MonoBehaviour
 
     public void OnWinEnd()
     {
+        objectiveImage.SetActive(true);
         GameManager.LoadNextSceneTrigger();
         this.gameObject.SetActive(false);
     }

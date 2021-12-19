@@ -43,6 +43,7 @@ public class GaryMessage : HumanPlayerMessage
             string[] splittedString = message.Split(',');
             int manaCount = int.Parse(splittedString[0]);
             // print("Mana Count: " + manaCount);
+            // print(gameObject.name);
             string updateMethod = splittedString[1];
             if(updateMethod == "Add")
             {

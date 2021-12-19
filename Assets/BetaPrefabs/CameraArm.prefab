@@ -46,6 +46,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotSpeed: 1
   rotationPeriod: 5
+--- !u!114 &1310627765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3045282269708475947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowDebugText: 0
+  m_ShowCameraFrustum: 1
+  m_IgnoreTimeScale: 0
+  m_WorldUpOverride: {fileID: 0}
+  m_UpdateMethod: 2
+  m_BlendUpdateMethod: 1
+  m_DefaultBlend:
+    m_Style: 1
+    m_Time: 2
+    m_CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  m_CustomBlends: {fileID: 0}
+  m_CameraCutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_CameraActivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &6538098505465275940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61,37 +95,37 @@ PrefabInstance:
     - target: {fileID: 8140531091535689738, guid: b6885f1923ac63341a33274e5406ece6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -389.38504
       objectReference: {fileID: 0}
     - target: {fileID: 8140531091535689738, guid: b6885f1923ac63341a33274e5406ece6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -31.691002
       objectReference: {fileID: 0}
     - target: {fileID: 8140531091535689738, guid: b6885f1923ac63341a33274e5406ece6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -212.65881
       objectReference: {fileID: 0}
     - target: {fileID: 8140531091535689738, guid: b6885f1923ac63341a33274e5406ece6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.9925319
       objectReference: {fileID: 0}
     - target: {fileID: 8140531091535689738, guid: b6885f1923ac63341a33274e5406ece6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.12140015
       objectReference: {fileID: 0}
     - target: {fileID: 8140531091535689738, guid: b6885f1923ac63341a33274e5406ece6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.011594473
       objectReference: {fileID: 0}
     - target: {fileID: 8140531091535689738, guid: b6885f1923ac63341a33274e5406ece6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.002833299
       objectReference: {fileID: 0}
     - target: {fileID: 8140531091535689738, guid: b6885f1923ac63341a33274e5406ece6,
         type: 3}
@@ -113,9 +147,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 8140531092174225495, guid: b6885f1923ac63341a33274e5406ece6,
+        type: 3}
+      propertyPath: field of view
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140531092174225495, guid: b6885f1923ac63341a33274e5406ece6,
+        type: 3}
+      propertyPath: far clip plane
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8140531092174225495, guid: b6885f1923ac63341a33274e5406ece6,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8140531091535689736, guid: b6885f1923ac63341a33274e5406ece6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b6885f1923ac63341a33274e5406ece6, type: 3}
+--- !u!1 &3045282269708475947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8140531091535689743, guid: b6885f1923ac63341a33274e5406ece6,
+    type: 3}
+  m_PrefabInstance: {fileID: 6538098505465275940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3045282269708475950 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8140531091535689738, guid: b6885f1923ac63341a33274e5406ece6,

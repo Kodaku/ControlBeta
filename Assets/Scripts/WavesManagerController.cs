@@ -28,5 +28,15 @@ public class WavesManagerController : MonoBehaviour
         currentWaveManager.GetComponent<WavesManager>().SpawnWave();
     }
 
+    public void RemoveEnemy(string enemy)
+    {
+        currentWaveManager.GetComponent<WavesManager>().RemoveEnemy(enemy);
+    }
+
+    public bool AreEnemiesFinished()
+    {
+        return currentWaveManager.GetComponent<WavesManager>().AreEnemiesFinished();
+    }
+
 
 }

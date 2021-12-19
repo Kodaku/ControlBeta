@@ -7,7 +7,7 @@ public class ElectricProjectile : MonoBehaviour
     private Transform target;
     private Vector3 direction;
     private Vector3 startDirection;
-    private float projectileDamage = 30.0f;
+    private float projectileDamage = 300.0f;
     [SerializeField] private float projectileSpeed;
     private bool hitted;
     // Start is called before the first frame update
@@ -50,7 +50,7 @@ public class ElectricProjectile : MonoBehaviour
             print(collision.gameObject.tag);
             if(collision.gameObject.tag == "Enemy")
             {
-                collision.gameObject.GetComponent<PlayerHealth>().UpdateHealth(projectileDamage);
+                collision.gameObject.GetComponent<AIBehaviourTree>().SendUpdateRequest(UpdatableIndices.HEALTH, -(int)projectileDamage);
             }
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Wilberforce;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,12 +19,14 @@ public class GameManager : MonoBehaviour
     public static bool CanTeleportPlayer = false;
     public static bool IsBossBattle = false;
     public static GameObject transitionScreen;
+    public static GameObject conclusionScreen;
     public static WinLoseScreen winLoseScreen;
     public static EventsTriggerManager eventsTriggerManager;
     public static CharacterSwitchManager characterSwitchManager;
     public static WavesManagerController wavesController;
+    public static Colorblind colorblind;
 
-    void Start()
+    void Awake()
     {
         IsPlayerDead = false;
         IsFightEnded = true;
@@ -38,18 +41,38 @@ public class GameManager : MonoBehaviour
         CanTeleportPlayer = false;
         IsBossBattle = false;
         transitionScreen = GameObject.FindGameObjectWithTag("TransitionScreen");
+        conclusionScreen = GameObject.FindGameObjectWithTag("ConclusionScreen");
         winLoseScreen = GameObject.FindGameObjectWithTag("WinLoseScreen").GetComponent<WinLoseScreen>();
         eventsTriggerManager = GameObject.FindGameObjectWithTag("TriggerManager").GetComponent<EventsTriggerManager>();
         characterSwitchManager = GameObject.FindGameObjectWithTag("SwitchManager").GetComponent<CharacterSwitchManager>();
         wavesController = GameObject.FindGameObjectWithTag("WavesManager").GetComponent<WavesManagerController>();
+        colorblind = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Colorblind>();
         transitionScreen.gameObject.SetActive(false);
+        conclusionScreen.gameObject.SetActive(false);
         winLoseScreen.gameObject.SetActive(false);
+        // SpecialAttackTargetManager.UpdateTargetNames("Bruce");
     }
 
     public static void ShowTransitionScreen()
     {
         transitionScreen.gameObject.SetActive(true);
         GameObject.FindGameObjectWithTag("TransitionScreen").GetComponent<Animator>().Play("FadeIn");
+    }
+
+    public static void ApplyDaltonicFilter()
+    {
+        colorblind.Type = 2;
+    }
+
+    public static void DisableDaltonicFilter()
+    {
+        colorblind.Type = 0;
+    }
+
+    public static void ShowConclusionScreen()
+    {
+        conclusionScreen.gameObject.SetActive(true);
+        conclusionScreen.GetComponent<Animator>().Play("ConclusionFadeIn");
     }
 
     public static void ShowWinLoseScreen()
@@ -92,5 +115,15 @@ public class GameManager : MonoBehaviour
     public static void SpawnWave()
     {
         wavesController.SpawnEnemies();
+    }
+
+    public static void RemoveEnemy(string enemy)
+    {
+        wavesController.RemoveEnemy(enemy);
+    }
+
+    public static bool AreEnemiesFinished()
+    {
+        return wavesController.AreEnemiesFinished();
     }
 }

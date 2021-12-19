@@ -631,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17082f5fc57afc7499312978e6ad37c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 3569045344336438023, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+  target: {fileID: 0}
   attacks:
   - attacksFileName: GaryCombo1
     attackType: 0
@@ -788,6 +788,11 @@ MonoBehaviour:
   leftLegCollider: {fileID: 745965076001397279}
   rightLegCollider: {fileID: 745965075154788436}
   isPlayer: 0
+  hitDetectors:
+  - {fileID: 1021645937687422968}
+  - {fileID: 3542302714962561320}
+  - {fileID: 317349049331102607}
+  - {fileID: 317349049100209031}
 --- !u!114 &2551491262531335847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -803,6 +808,9 @@ MonoBehaviour:
   startDistanceRadius: 10
   distanceRadius: 20
   chargingAura: {fileID: 0}
+  isLast: 0
+  isLastInWave: 1
+  isBoos: 0
 --- !u!114 &3308972664604131275
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -171,7 +171,7 @@ public class HumanPlayerMovement : MonoBehaviour
     private void ExecuteEvade()
     {
         // print("Evade");
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.EVADE, new string[]{"Player", "Player"});
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.EVADE, new string[]{gameObject.tag, gameObject.name});
     }
 
     public void TranslateEvade()
@@ -181,8 +181,11 @@ public class HumanPlayerMovement : MonoBehaviour
     private void GuardBreak()
     {
         humanPlayerAnimations.GuardBreak();
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.GUARD_BREAK, new string[]{"Enemy", "Bruce"});
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "750", "Sub"});
+        foreach(string targetName in SpecialAttackTargetManager.targetNames)
+        {
+            humanPlayerMessage.PrepareAndSendMessage(MessageTypes.GUARD_BREAK, new string[]{"Enemy", targetName});
+        }
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{gameObject.tag, gameObject.name, "750", "Sub"});
     }
 
     private void GuardBreakReaction()

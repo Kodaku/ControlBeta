@@ -9,7 +9,7 @@ public class AIHitDetector : HitDetector
     public override void Start()
     {
         base.Start();
-        aIPlayerMessage = GameObject.FindGameObjectWithTag("Enemy").GetComponent<AIPlayerMessage>();
+        aIPlayerMessage = GetComponentInParent<AIPlayerMessage>();
     }
 
     // Update is called once per frame
@@ -38,11 +38,12 @@ public class AIHitDetector : HitDetector
             {
                 hitFXPos.x -= 0.3f;
             }
+            // print(hit[0].gameObject.name);
             GameObject newHitFX = Instantiate(hitFX, hitFXPos, Quaternion.identity);
             newHitFX.gameObject.SetActive(true);
             EffectsDestroyer.instance.DestroyEffect(newHitFX);
             //Send a message to the player to apply the damage
-            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.APPLY_PUNCH_DAMAGE, new string[]{"Player", "Player", damage.ToString()});
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.APPLY_PUNCH_DAMAGE, new string[]{hit[0].gameObject.tag, hit[0].gameObject.name, damage.ToString()});
             canEvaluateHit = false;
             gameObject.SetActive(false);
         }

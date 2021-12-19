@@ -1,0 +1,32 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Pazzesco, ora conosceremo una divinità",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Erick",
+            "sentence": "Non perché hai sentito delle voce sono per forza Dio",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "Non rovinarmi lo scenario, dai!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Erick",
+            "sentence": "Beh...speriamo solo di tornare a casa",
+            "eventCategory": "CONCLUSION",
+            "eventDescription": ""
+        }
+    ]
+}

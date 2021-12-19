@@ -1,11 +1,10 @@
 {
-    "dialogues":
-    [
+    "dialogues": [
         {
             "id": "0",
             "characterName": "Gary",
             "sentence": "Ehi c'è qualcuno!",
-            "eventCategory": "",
+            "eventCategory": "BRUCE_APPEARS",
             "eventDescription": ""
         },
         {

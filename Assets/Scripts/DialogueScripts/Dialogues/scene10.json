@@ -4,7 +4,7 @@
             "id": "0",
             "characterName": "Bruce",
             "sentence": "Bene bene, chi abbiamo qui",
-            "eventCategory": "",
+            "eventCategory": "BRUCE_APPEARS",
             "eventDescription": ""
         },
         {

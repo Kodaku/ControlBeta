@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour, Updatable
     [SerializeField] private float health;
     [SerializeField] private float maxHealth;
     [SerializeField] private Gradient gradient;
+    [SerializeField] private bool isBoss;
 
     public void AddQuantity(int quantity)
     {
@@ -16,9 +17,12 @@ public class PlayerHealth : MonoBehaviour, Updatable
         if(health <= 0.0f)
         {
             health = 0.0f;
-            GameManager.IsPlayerDead = true;
-            GameManager.ShowWinLoseScreen();
-            GameManager.ShowWinLoseText(false);
+            if(!isBoss)
+            {
+                GameManager.IsPlayerDead = true;
+                GameManager.ShowWinLoseScreen();
+                GameManager.ShowWinLoseText(false);
+            }
         }
         float currentHealth = health / maxHealth;
         healthImage.fillAmount = currentHealth;

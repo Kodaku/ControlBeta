@@ -94,7 +94,7 @@ public class AIPlayer : Player
             case PlayerStates.SPECIAL_2: case PlayerStates.FINAL_ATTACK:
             {
                 // print("Special Attack from AI Player");
-                playerAttack.SpecialAttack(currentState);
+                // playerAttack.SpecialAttack(currentState);
                 break;
             }
         }

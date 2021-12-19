@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class ButtonController : MonoBehaviour
 {
@@ -30,7 +29,6 @@ public class ButtonController : MonoBehaviour
             float rotationDirection = Input.GetAxisRaw("Horizontal");
             float translationDirection = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(rotationDirection, 0.0f, translationDirection).normalized;
-            PointerEventData pointer = new PointerEventData(EventSystem.current);
             if(direction.magnitude > 0.0f)
             {
                 player.SetCurrentState(PlayerStates.MOVE_UP, new float[]{direction.x, direction.y, direction.z});

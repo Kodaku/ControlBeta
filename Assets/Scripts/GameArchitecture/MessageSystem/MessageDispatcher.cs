@@ -100,13 +100,20 @@ public class MessageDispatcher
     private void SendMessageToPlayer(MessageTypes messageType, string destTag, string info, string[] destNames)
     {
         GameObject[] targets = GameObject.FindGameObjectsWithTag(destTag);
+        
+        // Debug.Log(destNames);
         foreach(GameObject target in targets)
         {
             string destName = Array.Find<string>(destNames, name => name == target.name);
+            // Debug.Log("Sending message to :" + destName);
             if(destName != "")
             {
-                PlayerMessage playerMessage= target.GetComponent<PlayerMessage>();
-                playerMessage.ReceiveMessage(messageType, info);
+                if(target.gameObject.name == destName)
+                {
+                    PlayerMessage playerMessage= target.GetComponent<PlayerMessage>();
+                    // Debug.Log(playerMessage.gameObject.name);
+                    playerMessage.ReceiveMessage(messageType, info);
+                }
             }
         }
     }

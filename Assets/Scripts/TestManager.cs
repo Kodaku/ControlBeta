@@ -8,18 +8,23 @@ public class TestManager : MonoBehaviour
     public GameObject[] scenes;
     public GameObject[] players;
     public GameObject[] waves;
-    public GameObject beginningBruce;
+    // public GameObject beginningBruce;
+    // public GameObject bruce;
 
     void Start()
     {
+        // if(sceneIndex < 9)
+        // {
+        //     bruce.SetActive(false);
+        // }
         if(sceneIndex > 5)
         {
             GameManager.HasErickPower = true;
         }
-        if(sceneIndex > 2)
-        {
-            beginningBruce.SetActive(false);
-        }
+        // if(sceneIndex > 2)
+        // {
+        //     beginningBruce.SetActive(false);
+        // }
         if(sceneIndex > 6)
         {
             GameManager.HasGaryPower = true;

@@ -23,11 +23,15 @@ public class AIBehaviourTree : MonoBehaviour
     private bool isDamage = false;
     private bool isGuardBreak = false;
     private bool isDead = false;
+    private bool canExecuteSpecialAttack;
+    private bool isExecutingSpecialAttack;
     public bool isLast;
     public bool isLastInWave;
     public bool isBoos;
     private float gap = 5.0f;
     private float currentSpecialAttackTimer = 0.0f;
+    private int randomSpecialAttackIndex;
+    private float manaRequired;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +55,17 @@ public class AIBehaviourTree : MonoBehaviour
         if(chargingAura)
         {
             chargingAura.gameObject.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        currentSpecialAttackTimer += Time.deltaTime;
+        if(currentSpecialAttackTimer > 10.0f)
+        {
+            currentSpecialAttackTimer = 0.0f;
+            manaRequired = ExtractRandomSpecialAttackIndex();
+            canExecuteSpecialAttack = true;
         }
     }
 
@@ -94,6 +109,18 @@ public class AIBehaviourTree : MonoBehaviour
         positionSensor.ResetTarget();
     }
 
+    public void StartingSpecialAttack()
+    {
+        isExecutingSpecialAttack = true;
+    }
+
+    public void EndSpecialAttack()
+    {
+        isExecutingSpecialAttack = false;
+        canExecuteSpecialAttack = false;
+        manaRequired = ExtractRandomSpecialAttackIndex();
+    }
+
 
     //WANDER SECTION
 
@@ -117,6 +144,10 @@ public class AIBehaviourTree : MonoBehaviour
     [Task]
     public void MoveToDestination()
     {
+        if(isExecutingSpecialAttack)
+        {
+            Task.current.Succeed();
+        }
         if(Task.isInspected)
         {
             Task.current.debugInfo = string.Format("t={0:0.00}", Time.time);
@@ -128,6 +159,7 @@ public class AIBehaviourTree : MonoBehaviour
         }
         else
         {
+            // agent.isStopped = false;
             if(agent.velocity.magnitude > 0.1f)
             {
                 aIPlayerAnimations.Walk(true);
@@ -181,31 +213,6 @@ public class AIBehaviourTree : MonoBehaviour
         float destinationZ = this.transform.position.z;
         Vector3 fleeDest = new Vector3(destinationX, this.transform.position.y, destinationZ);
         agent.SetDestination(fleeDest);
-        Task.current.Succeed();
-    }
-
-    // CHARGE SECTION
-
-    [Task]
-    public void Charge()
-    {
-        float currentMana = updatableSensors[(int)UpdatableIndices.MANA].GetMeasure();
-        if(Task.current.isStarting)
-        {
-            chargingAura.gameObject.SetActive(true);
-        }
-        aIPlayerAnimations.ChargingEnergy(true);
-        if(currentMana > 750)
-        {
-            Task.current.Succeed();
-        }
-    }
-
-    [Task]
-    public void EndCharge()
-    {
-        aIPlayerAnimations.ChargingEnergy(false);
-        chargingAura.gameObject.SetActive(false);
         Task.current.Succeed();
     }
 
@@ -298,8 +305,11 @@ public class AIBehaviourTree : MonoBehaviour
     [Task]
     public void Die()
     {
+        // print("Die");
         aIPlayerAnimations.Die();
-        if(isLast)
+        // print("Die: " + this.gameObject);
+        GameManager.RemoveEnemy(this.gameObject.name);
+        if(isLast && GameManager.AreEnemiesFinished())
         {
             print("Is Last");
             GameManager.IsPreparingFight = false;
@@ -308,8 +318,9 @@ public class AIBehaviourTree : MonoBehaviour
             GameManager.ShowWinLoseScreen();
             GameManager.ShowWinLoseText(true);
         }
-        else if(isLastInWave)
+        else if(GameManager.AreEnemiesFinished())
         {
+            SpecialAttackTargetManager.ClearTargetNames();
             GameManager.SpawnWave();
         }
         Task.current.Succeed();
@@ -318,5 +329,104 @@ public class AIBehaviourTree : MonoBehaviour
     public void Disappear()
     {
         this.gameObject.SetActive(false);
+    }
+
+    // BRUCE SECTION
+    [Task]
+    public bool IsHealthOk()
+    {
+        float health = updatableSensors[(int)UpdatableIndices.HEALTH].GetMeasure();
+        return health > 600;
+    }
+
+    public float ExtractRandomSpecialAttackIndex()
+    {
+        randomSpecialAttackIndex = Random.Range(0, 3);
+        print(randomSpecialAttackIndex);
+        switch(randomSpecialAttackIndex)
+        {
+            case 0:
+                return 500;
+            case 1:
+                return 650;
+            case 2:
+                return 800;
+            default:
+                return 0;
+        }
+    }
+
+    [Task]
+    public bool IsManaSufficient()
+    {
+        if(canExecuteSpecialAttack && !isExecutingSpecialAttack)
+        {
+            float mana = updatableSensors[(int)UpdatableIndices.MANA].GetMeasure();
+            return mana > manaRequired;
+        }
+        return false;
+    }
+
+    [Task]
+    public bool IsManaUnsufficient()
+    {
+        float mana = updatableSensors[(int)UpdatableIndices.MANA].GetMeasure();
+        return mana <= manaRequired;
+    }
+
+    [Task]
+    public void SpecialAttack()
+    {
+        // int randomSpecialAttack = Random.Range(0, 3);
+        print("Special Attack");
+        Vector3 playerPosition = positionSensor.GetMeasure();
+        switch(randomSpecialAttackIndex)
+        {
+            case 0:
+                aIPlayerAttack.SpecialAttack(PlayerStates.SPECIAL_1, playerPosition);
+                break;
+            case 1:
+                aIPlayerAttack.SpecialAttack(PlayerStates.SPECIAL_2, playerPosition);
+                break;
+            case 2:
+                aIPlayerAttack.SpecialAttack(PlayerStates.FINAL_ATTACK, playerPosition);
+                break;
+        }
+        // canExecuteSpecialAttack = false;
+        Task.current.Succeed();
+    }
+
+    [Task]
+    public bool CanExecuteSpecialAttack()
+    {
+        return canExecuteSpecialAttack && !isExecutingSpecialAttack;
+    }
+
+    // CHARGE SECTION
+
+    [Task]
+    public void Charge()
+    {
+        agent.isStopped = true;
+        agent.ResetPath();
+        float currentMana = updatableSensors[(int)UpdatableIndices.MANA].GetMeasure();
+        if(Task.current.isStarting)
+        {
+            chargingAura.gameObject.SetActive(true);
+        }
+        aIPlayerAnimations.ChargingEnergy(true);
+        updatables[(int)UpdatableIndices.MANA].AddQuantity(1);
+        if(currentMana > 900)
+        {
+            Task.current.Succeed();
+        }
+    }
+
+    [Task]
+    public void EndCharge()
+    {
+        aIPlayerAnimations.ChargingEnergy(false);
+        chargingAura.gameObject.SetActive(false);
+        Task.current.Succeed();
     }
 }

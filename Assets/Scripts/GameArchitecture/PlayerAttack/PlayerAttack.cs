@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] protected GameObject target;
+    [SerializeField] protected Vector3 target;
     private Vector3 startExplosionPosition;
     public Attack[] attacks;
     protected List<Attack> comboAttacks;

@@ -72,19 +72,25 @@ public class GaryAttacks : HumanPlayerAttack
         base.ExecuteSpecialAttack1();
         specialAttack1VFX = Instantiate(specialAttack1VFX, this.transform.position, Quaternion.identity);
         specialAttack1VFX.gameObject.SetActive(true);
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", "Bruce", "CAN_ESCAPE"});
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "10", "Sub"});
+        foreach(string targetName in SpecialAttackTargetManager.targetNames)
+        {
+            humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", targetName, "CAN_ESCAPE"});
+        }
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{gameObject.tag, gameObject.name, "300", "Sub"});
     }
 
     public void SendExecutionMessage()
     {
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_ATTACK, new string[]{"Enemy", "Bruce", "10", "20"});
-        StartCoroutine(RepeatSendExecutionSpecialAttack1());
+        foreach(string targetName in SpecialAttackTargetManager.targetNames)
+        {
+            humanPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_ATTACK, new string[]{"Enemy", targetName, "150", "20"});
+        }
+        // StartCoroutine(RepeatSendExecutionSpecialAttack1());
     }
 
     private IEnumerator RepeatSendExecutionSpecialAttack1()
     {
-        print(checkHitTime1);
+        // print(checkHitTime1);
         yield return new WaitForSeconds(checkHitTime1);
         if(specialAttack1HitCounter < specialAttack1HitNumber)
         {
@@ -106,7 +112,10 @@ public class GaryAttacks : HumanPlayerAttack
         projectileTarget.transform.position = this.transform.position + 30.0f * projectileTarget.transform.forward;
         normalAura.gameObject.SetActive(false);
         // string info = PacketCreator.PrepareMessage();
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", "Bruce", "CAN_ESCAPE"});
+        foreach(string targetName in SpecialAttackTargetManager.targetNames)
+        {
+            humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", targetName, "CAN_ESCAPE"});
+        }
     }
 
     private void SpawnProjectileAura()
@@ -131,8 +140,11 @@ public class GaryAttacks : HumanPlayerAttack
                     );
         specialAttack2VFX.gameObject.SetActive(true);
         // string info = PacketCreator.PrepareMessage();
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.LAUNCH_PROJECTILE, new string[]{"Enemy", "Bruce"});
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "15", "Sub"});
+        foreach(string targetName in SpecialAttackTargetManager.targetNames)
+        {
+            humanPlayerMessage.PrepareAndSendMessage(MessageTypes.LAUNCH_PROJECTILE, new string[]{"Enemy", targetName});
+        }
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{gameObject.tag, gameObject.name, "150", "Sub"});
         // GetComponent<PlayerMana>().DecreaseMana(15);
     }
 
@@ -150,8 +162,11 @@ public class GaryAttacks : HumanPlayerAttack
         currentChidoriTimer = 0.0f;
         chidoriAura.gameObject.SetActive(true);
         
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", "Bruce", "CANNOT_ESCAPE"});
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "30", "Sub"});
+        foreach(string targetName in SpecialAttackTargetManager.targetNames)
+        {
+            humanPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_ATTACK, new string[]{"Enemy", targetName, "CANNOT_ESCAPE"});
+        }
+        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{gameObject.tag, gameObject.name, "800", "Sub"});
     }
 
     private void SpawnChidori()
@@ -167,8 +182,11 @@ public class GaryAttacks : HumanPlayerAttack
 
     private void ApplyChidoriDamage()
     {
-        humanPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_ATTACK, new string[]{"Enemy", "Bruce", "50", "10"});
-        StartCoroutine(RepeatApplyChidoriDamage());
+        foreach(string targetName in SpecialAttackTargetManager.targetNames)
+        {
+            humanPlayerMessage.PrepareAndSendMessage(MessageTypes.EXECUTE_ATTACK, new string[]{"Enemy", targetName, "400", "10"});
+        }
+        // StartCoroutine(RepeatApplyChidoriDamage());
     }
 
     private IEnumerator RepeatApplyChidoriDamage()

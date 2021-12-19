@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class AIBruceMessage : AIPlayerMessage
 {
-    private Transform target;
+    private Vector3 targetPosition;
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public override void ReceiveMessage(MessageTypes messageType, string message)
@@ -21,13 +20,17 @@ public class AIBruceMessage : AIPlayerMessage
         }
         else if(messageType == MessageTypes.EXECUTE_ATTACK)
         {
+            positionSensor.ResetTarget();
+            targetPosition = positionSensor.GetMeasure();
             string[] splittedString = message.Split(',');
             int damage = int.Parse(splittedString[0]);
             int range = int.Parse(splittedString[1]);
-            if(Vector3.Distance(this.transform.position, target.transform.position) < range)
+            if(Vector3.Distance(this.transform.position, targetPosition) < range)
             {
                 // print("Hit");
-                GetComponent<PlayerHealth>().UpdateHealth(damage);
+                // GetComponent<PlayerHealth>().UpdateHealth(damage);
+                behaviourTree.SendUpdateRequest(UpdatableIndices.HEALTH, -damage);
+                behaviourTree.ApplyDamage();
             }
         }
         else if(messageType == MessageTypes.LAUNCH_PROJECTILE)
@@ -51,16 +54,21 @@ public class AIBruceMessage : AIPlayerMessage
         }
         else if(messageType == MessageTypes.BEGIN_SPECIAL_ATTACK)
         {
+            print("Begin Special Attack");
             behaviourTree.ResetCurrentSpecialAttackTimer();
+            behaviourTree.StartingSpecialAttack();
         }
         else if(messageType == MessageTypes.END_SPECIAL_ATTACK)
         {
+            print("End Special Attack");
             behaviourTree.ResetCurrentSpecialAttackTimer();
+            behaviourTree.EndSpecialAttack();
             // decisionMaker.CanDecideNextMove();
         }
         else if(messageType == MessageTypes.ACTION_TERMINATED)
         {
             // decisionMaker.CanDecideNextMove();
+            // behaviourTree.EndSpecialAttack();
         }
         else if(messageType == MessageTypes.EVADE)
         {
@@ -81,6 +89,10 @@ public class AIBruceMessage : AIPlayerMessage
         else if(messageType == MessageTypes.END_GUARD_BREAK)
         {
             // behaviourTree.EndGuardBreak();
+        }
+        else if(messageType == MessageTypes.SWITCH_CHARACTER)
+        {
+            behaviourTree.ResetTarget();
         }
     }
 }

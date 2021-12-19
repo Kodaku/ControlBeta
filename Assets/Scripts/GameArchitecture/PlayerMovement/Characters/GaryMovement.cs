@@ -22,7 +22,7 @@ public class GaryMovement : HumanPlayerMovement
     public override void StartEnergyCharge()
     {
         base.StartEnergyCharge();
-        SendMessageFromMovement(MessageTypes.UPDATE_MANA, new string[]{"Player", "Player", "1", "Add"});
+        SendMessageFromMovement(MessageTypes.UPDATE_MANA, new string[]{gameObject.tag, gameObject.name, "2", "Add"});
     }
 
     public override void SendMessageFromMovement(MessageTypes messageTypes, string[] info)

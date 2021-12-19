@@ -43,31 +43,31 @@ public class AIPlayerAttack : PlayerAttack
     }
 
     // Update is called once per frame
-    public virtual void SpecialAttack(PlayerStates currentState)
+    public virtual void SpecialAttack(PlayerStates currentState, Vector3 targetPosition)
     {
         if(currentState == PlayerStates.SPECIAL_1 && !executingSpecialAttack && !isReacting)
         {
             executingSpecialAttack = true;
-            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_SPECIAL_ATTACK, new string[]{"Enemy", "Bruce"});
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_SPECIAL_ATTACK, new string[]{"Enemy", gameObject.name});
             aIPlayerAnimations.ExecuteSpecialAttack1();
-            ExecuteSpecialAttack1();
+            ExecuteSpecialAttack1(targetPosition);
             StartCoroutine(EndSpecialAttack1());
             
         }
         if(currentState == PlayerStates.SPECIAL_2 && !executingSpecialAttack && !isReacting)
         {
             executingSpecialAttack = true;
-            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_SPECIAL_ATTACK, new string[]{"Enemy", "Bruce"});
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_SPECIAL_ATTACK, new string[]{"Enemy", gameObject.name});
             aIPlayerAnimations.ExecuteSpecialAttack2();
-            ExecuteSpecialAttack2();
+            ExecuteSpecialAttack2(targetPosition);
             StartCoroutine(EndSpecialAttack2());
         }
         if(currentState == PlayerStates.FINAL_ATTACK && !executingSpecialAttack && !isReacting)
         {
             executingSpecialAttack = true;
-            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_SPECIAL_ATTACK, new string[]{"Enemy", "Bruce"});
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.BEGIN_SPECIAL_ATTACK, new string[]{"Enemy", gameObject.name});
             aIPlayerAnimations.ExecuteSpecialAttack3();
-            ExecuteSpecialAttack3();
+            ExecuteSpecialAttack3(targetPosition);
             StartCoroutine(EndSpecialAttack3());
         }
     }
@@ -86,12 +86,12 @@ public class AIPlayerAttack : PlayerAttack
             if(!canActivateStrongAttackTimer)
             {
                 ComboAttack();
-                aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
+                // aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
             }
             else if(canActivateStrongAttackTimer)
             {
                 StrongAttack();
-                aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
+                // aIPlayerMessage.PrepareAndSendMessage(MessageTypes.ACTION_TERMINATED, new string[]{"Enemy", "Bruce"});
             }
             currentAttackTimer = attackTimer;
         }
@@ -99,9 +99,9 @@ public class AIPlayerAttack : PlayerAttack
         ResetStrongAttackTimer();
     }
 
-    public virtual void ExecuteSpecialAttack1()
+    public virtual void ExecuteSpecialAttack1(Vector3 targetPosition)
     {
-
+        target = targetPosition;
     }
 
     private IEnumerator EndSpecialAttack1()
@@ -110,12 +110,12 @@ public class AIPlayerAttack : PlayerAttack
         executingSpecialAttack = false;
         aIPlayerAnimations.EndSpecialAttack1();
         specialAttack1VFX.gameObject.SetActive(false);
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.END_SPECIAL_ATTACK, new string[]{"Enemy", "Bruce"});
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.END_SPECIAL_ATTACK, new string[]{"Enemy", gameObject.name});
     }
 
-    public virtual void ExecuteSpecialAttack2()
+    public virtual void ExecuteSpecialAttack2(Vector3 targetPosition)
     {
-
+        target = targetPosition;
     }
 
     public virtual IEnumerator EndSpecialAttack2()
@@ -124,18 +124,18 @@ public class AIPlayerAttack : PlayerAttack
         executingSpecialAttack = false;
         aIPlayerAnimations.EndSpecialAttack2();
         specialAttack2VFX.gameObject.SetActive(false);
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.END_SPECIAL_ATTACK, new string[]{"Enemy", "Bruce"});
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.END_SPECIAL_ATTACK, new string[]{"Enemy", gameObject.name});
     }
 
-    public virtual void ExecuteSpecialAttack3()
+    public virtual void ExecuteSpecialAttack3(Vector3 targetPosition)
     {
-
+        target = targetPosition;
     }
 
     public virtual IEnumerator EndSpecialAttack3()
     {
         yield return new WaitForSeconds(specialAttack3Timer);
         aIPlayerAnimations.EndSpecialAttack3();
-        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.END_SPECIAL_ATTACK, new string[]{"Enemy", "Bruce"});
+        aIPlayerMessage.PrepareAndSendMessage(MessageTypes.END_SPECIAL_ATTACK, new string[]{"Enemy", gameObject.name});
     }
 }

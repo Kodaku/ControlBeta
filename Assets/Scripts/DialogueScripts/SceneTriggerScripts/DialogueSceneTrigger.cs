@@ -10,7 +10,7 @@ public class DialogueSceneTrigger : MonoBehaviour
     [SerializeField] private GameObject[] updatables;
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private GameObject[] objectsToTeleport;
-    [SerializeField] private Text objectiveText;
+    [SerializeField] private Text[] objectiveTexts;
     [TextArea(3,1)]
     public string objectiveString;
     private Vector3 savedPosition = Vector3.zero;
@@ -18,6 +18,8 @@ public class DialogueSceneTrigger : MonoBehaviour
     void OnEnable()
     {
         ShowUpdatables();
+        if(enemies.Length > 0)
+            enemies[0].SetActive(true);
     }
 
     void Start()
@@ -45,7 +47,8 @@ public class DialogueSceneTrigger : MonoBehaviour
             DialogueDirector.IsShowingDialogue = true;
             if(sceneIndex != -1)
             {
-                objectiveText.text = objectiveString;
+                foreach(Text objectiveText in objectiveTexts)
+                    objectiveText.text = objectiveString;
                 FindObjectOfType<DialogueManager>().LoadDialogue(sceneIndex);
             }
             Destroy(this.gameObject);

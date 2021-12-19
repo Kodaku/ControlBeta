@@ -57,6 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0caee9c6492ef04fb56dbc51341eee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBoss: 1
 --- !u!114 &1230063617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +199,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!95 &1026046726025410665
 Animator:
@@ -274,12 +275,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215092916870137128}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 17082f5fc57afc7499312978e6ad37c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 3569045344336438023, guid: e1323764cf9ed264fafaf0b96fd2298a, type: 3}
+  target: {x: 0, y: 0, z: 0}
   attacks:
   - attacksFileName: GaryCombo1
     attackType: 0
@@ -319,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manaImage: {fileID: 0}
-  mana: 100
+  mana: 1000
   maxMana: 1000
 --- !u!114 &1333393836
 MonoBehaviour:
@@ -334,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthImage: {fileID: 0}
-  health: 400
+  health: 1000
   maxHealth: 1000
   gradient:
     serializedVersion: 2
@@ -365,6 +366,7 @@ MonoBehaviour:
     m_Mode: 1
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  isBoss: 1
 --- !u!114 &1333393837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +400,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215092916870137128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2952ef43bf7c8464cb7770a3ff5fa22d, type: 3}
   m_Name: 
@@ -410,7 +412,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215092916870137128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a42499d749fc7e44b3ea5991112e952, type: 3}
   m_Name: 
@@ -436,6 +438,11 @@ MonoBehaviour:
   leftLegCollider: {fileID: 1026046725473529226}
   rightLegCollider: {fileID: 1026046726975690689}
   isPlayer: 0
+  hitDetectors:
+  - {fileID: 741667691700424813}
+  - {fileID: 3841494385780506301}
+  - {fileID: 538199066}
+  - {fileID: 373914642}
 --- !u!114 &2814684413367222578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +458,9 @@ MonoBehaviour:
   startDistanceRadius: 10
   distanceRadius: 20
   chargingAura: {fileID: 6399239265405756118}
+  isLast: 1
+  isLastInWave: 1
+  isBoos: 1
 --- !u!114 &2993950766866139230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scripts:
-  - {fileID: 4900000, guid: d524be9516d59264990196b647269b24, type: 3}
+  - {fileID: 4900000, guid: 561face07c91e2647906e4a6bb09634b, type: 3}
   autoReset: 1
   tickOn: 0
   sourceInfos:

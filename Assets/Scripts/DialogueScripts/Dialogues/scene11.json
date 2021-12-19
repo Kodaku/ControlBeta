@@ -1,0 +1,200 @@
+{
+    "dialogues": [
+        {
+            "id": "0",
+            "characterName": "Gary",
+            "sentence": "Anf...anf...ce l'abbiamo fatta!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "1",
+            "characterName": "Erick",
+            "sentence": "Così pare",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "2",
+            "characterName": "Gary",
+            "sentence": "Però ora come facciamo a tornare a casa? E poi...ho fatto finta di non vedere ma Bruce è sparito ancora quando lo abbiamo sconfitto",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "3",
+            "characterName": "Erick",
+            "sentence": "Non sarà che...",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "4",
+            "characterName": "???",
+            "sentence": "I miei complimenti, avete passato il primo livello",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "5",
+            "characterName": "Gary",
+            "sentence": "DIO!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "6",
+            "characterName": "???",
+            "sentence": "...ehm...no...ma, se insisti...sì, potrei essere Dio",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "7",
+            "characterName": "Gary",
+            "sentence": "Quindi ora possiamo tornare a casa?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "8",
+            "characterName": "Erick",
+            "sentence": "Non hai sentito cos'ha detto? Abbiamo passato il primo livello",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "9",
+            "characterName": "???",
+            "sentence": "Bravissimo, quindi no, non potete tornare a casa",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "10",
+            "characterName": "Gary",
+            "sentence": "Ma...questa è una truffa bella e buona. Non puoi intrappolare qui le persone e dargli l'illusione di avere la possibilità di poter tornare a casa quando in realtà non ce l'hanno",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "11",
+            "characterName": "Erick",
+            "sentence": "Gary...se ci pensi nessuno ci ha mai detto se possiamo o non possiamo uscire di qui",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "12",
+            "characterName": "???",
+            "sentence": "2-0 per Erick. Beh, entrate nel prossimo portale e potrete accedere al livello successivo",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "13",
+            "characterName": "Erick",
+            "sentence": "A quanto pare non abbiamo scelta",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "14",
+            "characterName": "??????",
+            "sentence": "Sì che ce l'avete",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "15",
+            "characterName": "Gary",
+            "sentence": "Plot twist! Un'altra voce!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "16",
+            "characterName": "???",
+            "sentence": "Sean?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "17",
+            "characterName": "Erick",
+            "sentence": "Lo conosci?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "18",
+            "characterName": "???",
+            "sentence": "Cosa stai facendo?!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "19",
+            "characterName": "Sean",
+            "sentence": "Li sto aiutando",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "20",
+            "characterName": "Sean",
+            "sentence": "Ascoltate, se entrate nel portale che vi aprirà lui non riuscirete più a tornare a casa. Fortunatamente sono riuscito a cambiare il codice di gioco e ora ve ne aprirò un altro che vi porterà da noi",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "21",
+            "characterName": "Erick",
+            "sentence": "Come possiamo essere sicuri che tu non ci menta?",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "22",
+            "characterName": "Gary",
+            "sentence": "Semplice, non possiamo. Dai andiamo in quello che ci apre lui, tanto menzogna per menzogna saremmo sempre bloccati qui",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "23",
+            "characterName": "Erick",
+            "sentence": "...hai ragione. E va bene, entreremo in quello che ci aprirai tu",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "24",
+            "characterName": "Sean",
+            "sentence": "Perfetto, grazie Gary",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "25",
+            "characterName": "???",
+            "sentence": "Sean, la pagherai!",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "26",
+            "characterName": "Sean",
+            "sentence": "No, Gray, sarai tu a pagarla",
+            "eventCategory": "",
+            "eventDescription": ""
+        },
+        {
+            "id": "27",
+            "characterName": "Sean",
+            "sentence": "Sbrigatevi, entrate nel portale che vi apro dentro il castello",
+            "eventCategory": "SHOW_NEXT_TRIGGER",
+            "eventDescription": ""
+        }
+    ]
+}

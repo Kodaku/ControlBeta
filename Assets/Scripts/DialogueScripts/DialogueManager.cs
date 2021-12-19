@@ -199,6 +199,7 @@ public class DialogueManager : MonoBehaviour
         else if(eventCategory == "BRUCE_APPEARS")
         {
             // print("Spawn Wave");
+            SpecialAttackTargetManager.ClearTargetNames();
             GameManager.SpawnFirstWave();
             GameManager.SpawnWave();
         }
@@ -209,11 +210,20 @@ public class DialogueManager : MonoBehaviour
         else if(eventCategory == "SPAWN_AND_SWITCH")
         {
             print("Spawn Another");
-            GameManager.IsControllingGary = true;
-            GameManager.IsControllingErick = false;
+            // GameManager.IsControllingGary = true;
+            // GameManager.IsControllingErick = false;
+            if(GameManager.IsControllingErick)
+            {
+                GameManager.SwitchCharacter();
+            }
             GameManager.IsDoubleControlEnabled = false;
+            SpecialAttackTargetManager.ClearTargetNames();
             GameManager.SpawnFirstWave();
             GameManager.SpawnWave();
+        }
+        else if(eventCategory == "CONCLUSION")
+        {
+            GameManager.ShowConclusionScreen();
         }
     }
 }

@@ -7,6 +7,10 @@ public class CharacterSwitchManager : MonoBehaviour
 {
     [SerializeField] private GameObject gary;
     [SerializeField] private GameObject erick;
+    [SerializeField] private GameObject garyLife;
+    [SerializeField] private GameObject garyMana;
+    [SerializeField] private GameObject erickLife;
+    [SerializeField] private GameObject erickMana;
     [SerializeField] private CinemachineFreeLook cinemachineFreeLook;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,13 @@ public class CharacterSwitchManager : MonoBehaviour
                 cinemachineFreeLook.LookAt = erick.transform;
                 erick.gameObject.tag = "Player";
                 gary.gameObject.tag = "Erick";
+                if(GameManager.IsFightStarted)
+                {
+                    garyLife.SetActive(false);
+                    garyMana.SetActive(false);
+                    erickLife.SetActive(true);
+                    erickMana.SetActive(true);
+                }
             }
             else if(GameManager.IsControllingGary)
             {
@@ -34,6 +45,18 @@ public class CharacterSwitchManager : MonoBehaviour
                 cinemachineFreeLook.LookAt = gary.transform;
                 gary.gameObject.tag = "Player";
                 erick.gameObject.tag = "Erick";
+                if(GameManager.IsFightStarted)
+                {
+                    garyLife.SetActive(true);
+                    garyMana.SetActive(true);
+                    erickLife.SetActive(false);
+                    erickMana.SetActive(false);
+                }
+            }
+            HumanPlayerMessage humanPlayerMessage = gary.GetComponent<HumanPlayerMessage>();
+            foreach(string targetName in SpecialAttackTargetManager.targetNames)
+            {
+                humanPlayerMessage.PrepareAndSendMessage(MessageTypes.SWITCH_CHARACTER, new string[]{"Enemy", targetName});
             }
         }
     }
@@ -48,6 +71,13 @@ public class CharacterSwitchManager : MonoBehaviour
             cinemachineFreeLook.LookAt = erick.transform;
             erick.gameObject.tag = "Player";
             gary.gameObject.tag = "Erick";
+            if(GameManager.IsFightStarted)
+            {
+                garyLife.SetActive(false);
+                garyMana.SetActive(false);
+                erickLife.SetActive(true);
+                erickMana.SetActive(true);
+            }
         }
         else if(GameManager.IsControllingGary)
         {
@@ -55,6 +85,13 @@ public class CharacterSwitchManager : MonoBehaviour
             cinemachineFreeLook.LookAt = gary.transform;
             gary.gameObject.tag = "Player";
             erick.gameObject.tag = "Erick";
+            if(GameManager.IsFightStarted)
+            {
+                garyLife.SetActive(true);
+                garyMana.SetActive(true);
+                erickLife.SetActive(false);
+                erickMana.SetActive(false);
+            }
         }
     }
 }

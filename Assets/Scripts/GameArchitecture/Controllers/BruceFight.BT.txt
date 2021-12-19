@@ -1,0 +1,73 @@
+tree("Root")
+	while not IsPlayerDead
+		sequence
+			fallback
+				while not IsFightStarted
+					Idle
+				while not IsFightEnded
+					sequence
+						fallback
+							while IsHealthOk
+								parallel
+									repeat mute tree("Attack")
+									repeat mute tree("React")
+									repeat mute tree("Death")
+							parallel
+								repeat mute tree("SpecialAttack")
+								repeat mute tree("Charge")
+								repeat mute tree("React")
+								repeat mute tree("Death")
+
+tree("Attack")
+	while not IsDead
+		while ReactAnimationCompleted
+			sequence
+				SearchPlayer
+				while not ReachedPlayer
+					sequence
+						SearchPlayer
+						MoveToDestination
+				Attack
+
+
+tree("React")
+	while not IsDead
+		while IsReacting
+			React
+
+
+tree("Death")
+	while IsDead
+		sequence
+			Die
+			Wait(100)
+			Disappear
+
+
+tree("SpecialAttack")
+	while not IsDead
+		while ReactAnimationCompleted
+			sequence
+				fallback
+					while IsManaSufficient
+						sequence
+							SpecialAttack
+
+
+tree("Wander")
+	while ReactAnimationCompleted
+		sequence
+			while not CanExecuteSpecialAttack
+				sequence
+					PickRandomDestination
+					MoveToDestination
+
+
+tree("Charge")
+	while not IsDead
+		while ReactAnimationCompleted
+			sequence
+				fallback
+					while IsManaUnsufficient
+						Charge
+					EndCharge

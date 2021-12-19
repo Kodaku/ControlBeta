@@ -144,7 +144,7 @@ public class AIBruceMovement : AIPlayerMovement
         }
         else
         {
-            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", "Bruce", "1", "Add"});
+            aIPlayerMessage.PrepareAndSendMessage(MessageTypes.UPDATE_MANA, new string[]{"Enemy", "Bruce", "2", "Add"});
             aIPlayerAnimations.ChargingEnergy(true);
             chargingAura.gameObject.SetActive(true);
         }

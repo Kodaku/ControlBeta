@@ -13,6 +13,7 @@ public class TransitionScreen : MonoBehaviour
     public GameObject enemyHealth;
     public GameObject bossHealth;
     public GameObject bossMana;
+    public GameObject objectiveImage;
 
     public void PreparingFight()
     {
@@ -43,6 +44,7 @@ public class TransitionScreen : MonoBehaviour
         else
             enemyHealth.SetActive(true);
         fightScreen.SetActive(true);
+        objectiveImage.SetActive(false);
         this.gameObject.SetActive(false);
     }
 }
