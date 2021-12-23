@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject commandsMenuUI;
     public GameObject optionsMenuUI;
+    public GameObject confirmMenuUI;
 
     // Update is called once per frame
     void Update()
@@ -31,6 +32,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         commandsMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
+        confirmMenuUI.SetActive(false);
         Time.timeScale = 1.0f;
         GameIsPaused = false;
     }
@@ -40,6 +42,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         commandsMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
+        confirmMenuUI.SetActive(false);
         Time.timeScale = 0.0f;
         GameIsPaused = true;
     }
@@ -49,6 +52,7 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
         commandsMenuUI.SetActive(true);
+        confirmMenuUI.SetActive(false);
     }
 
     public void OptionsMenu()
@@ -56,6 +60,15 @@ public class PauseMenu : MonoBehaviour
         optionsMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
         commandsMenuUI.SetActive(false);
+        confirmMenuUI.SetActive(false);
+    }
+
+    public void ConfirmMenu()
+    {
+        optionsMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        commandsMenuUI.SetActive(false);
+        confirmMenuUI.SetActive(true);
     }
 
     public void LoadMenu()
