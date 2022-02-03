@@ -6,7 +6,7 @@ using TMPro;
 
 public class DropdownHandler : MonoBehaviour
 {
-    public Text text;
+    // public Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +25,12 @@ public class DropdownHandler : MonoBehaviour
 
         DropdownItemSelected(dropdown);
 
-        dropdown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropdown);});
+        // dropdown.onValueChanged.AddListener(delegate { DropdownItemSelected(dropdown);});
     }
 
     private void DropdownItemSelected(TMP_Dropdown dropdown)
     {
         int index = dropdown.value;
-        text.text = dropdown.options[index].text;
+        // text.text = dropdown.options[index].text;
     }
 }
